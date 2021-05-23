@@ -1,5 +1,5 @@
 /*******************************************************************************
-*  (c) 2019 Zondax GmbH
+*   (c) 2018 Zondax GmbH
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -13,30 +13,26 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 ********************************************************************************/
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wextern-c-compat"
 #pragma once
 
-#ifdef __cplusplus
-extern "C" {
+#if !defined (TARGET_NANOS) && !defined(TARGET_NANOX)
+
+#define MEMMOVE memmove
+#define MEMSET memset
+#define MEMCPY memcpy
+#define MEMCMP memcmp
+#define MEMCPY_NV memcpy
+
+#define PIC(x) (x)
+#define CHECK_APP_CANARY() {}
+//#define CX_ECCINFO_PARITY_ODD 1u
+//#define CX_ECCINFO_xGTn 2u
+
+#ifndef __APPLE__
+#define MEMZERO explicit_bzero
+#else
+__Z_INLINE void __memzero(void *buffer, size_t s) { memset(buffer, 0, s); }
+#define MEMZERO __memzero
 #endif
 
-#include <stddef.h>
-#include <stdint.h>
-
-#define GET_PD_CALL(CALL, VERSION) (PD_CALL_##CALL##_V##VERSION)
-
-#include "substrate_methods_V1.h"
-#include "substrate_types_V1.h"
-
-typedef union {
-    pd_Method_V1_t V1;
-} pd_Method_t;
-
-typedef union {
-    pd_MethodNested_V1_t V1;
-} pd_MethodNested_t;
-
-#ifdef __cplusplus
-}
 #endif

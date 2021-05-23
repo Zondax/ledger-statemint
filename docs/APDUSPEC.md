@@ -1,4 +1,4 @@
-# Kusama App
+# Statemint App
 
 ## General structure
 
@@ -8,7 +8,7 @@ The general structure of commands and responses is as follows:
 
 | Field   | Type     | Content                | Note |
 | :------ | :------- | :--------------------- | ---- |
-| CLA     | byte (1) | Application Identifier | 0x99 |
+| CLA     | byte (1) | Application Identifier | 0x95 |
 | INS     | byte (1) | Instruction ID         |      |
 | P1      | byte (1) | Parameter 1            |      |
 | P2      | byte (1) | Parameter 2            |      |
@@ -45,7 +45,7 @@ The general structure of commands and responses is as follows:
 
 | Field | Type     | Content                | Expected |
 | ----- | -------- | ---------------------- | -------- |
-| CLA   | byte (1) | Application Identifier | 0x99     |
+| CLA   | byte (1) | Application Identifier | 0x95     |
 | INS   | byte (1) | Instruction ID         | 0x00     |
 | P1    | byte (1) | Parameter 1            | ignored  |
 | P2    | byte (1) | Parameter 2            | ignored  |
@@ -70,7 +70,7 @@ The general structure of commands and responses is as follows:
 
 | Field   | Type     | Content                   | Expected   |
 | ------- | -------- | ------------------------- | ---------- |
-| CLA     | byte (1) | Application Identifier    | 0x99       |
+| CLA     | byte (1) | Application Identifier    | 0x95       |
 | INS     | byte (1) | Instruction ID            | 0x01       |
 | P1      | byte (1) | Request User confirmation | No = 0     |
 | P2      | byte (1) | Parameter 2               | ignored    |
@@ -97,7 +97,7 @@ The general structure of commands and responses is as follows:
 
 | Field   | Type     | Content                   | Expected   |
 | ------- | -------- | ------------------------- | ---------- |
-| CLA     | byte (1) | Application Identifier    | 0x99       |
+| CLA     | byte (1) | Application Identifier    | 0x95       |
 | INS     | byte (1) | Instruction ID            | 0x11       |
 | P1      | byte (1) | Request User confirmation | No = 0     |
 | P2      | byte (1) | Parameter 2               | ignored    |
@@ -124,7 +124,7 @@ The general structure of commands and responses is as follows:
 
 | Field | Type     | Content                | Expected  |
 | ----- | -------- | ---------------------- | --------- |
-| CLA   | byte (1) | Application Identifier | 0x99      |
+| CLA   | byte (1) | Application Identifier | 0x95      |
 | INS   | byte (1) | Instruction ID         | 0x02      |
 | P1    | byte (1) | Payload desc           | 0 = init  |
 |       |          |                        | 1 = add   |
@@ -167,7 +167,7 @@ All other packets/chunks contain data chunks that are described below
 
 | Field | Type     | Content                | Expected  |
 | ----- | -------- | ---------------------- | --------- |
-| CLA   | byte (1) | Application Identifier | 0x99      |
+| CLA   | byte (1) | Application Identifier | 0x95      |
 | INS   | byte (1) | Instruction ID         | 0x12      |
 | P1    | byte (1) | Payload desc           | 0 = init  |
 |       |          |                        | 1 = add   |
@@ -201,101 +201,3 @@ All other packets/chunks contain data chunks that are described below
 | ------- | --------- | ----------- | ------------------------ |
 | SIG     | byte (65) | Signature   |                          |
 | SW1-SW2 | byte (2)  | Return code | see list of return codes |
-
----
-
-### INS_ALLOWLIST_GET_PUBKEY
-
-#### Command
-
-| Field  | Type      | Content                   | Expected |
-| ------ | --------- | ------------------------- | -------- |
-| CLA    | byte (1)  | Application Identifier    | 0x99     |
-| INS    | byte (1)  | Instruction ID            | 0x90     |
-| P1     | byte (1)  | Request User confirmation | No = 0   |
-| P2     | byte (1)  | Parameter 2               | ignored  |
-| L      | byte (1)  | Bytes in payload          | 0       |
-
-#### Response
-
-| Field   | Type     | Content     | Note                     |
-| ------- | -------- | ----------- | ------------------------ |
-| PUBKEY | byte (32) | Master pubkey             |          |
-| SW1-SW2 | byte (2) | Return code | see list of return codes |
-
-### INS_ALLOWLIST_SET_PUBKEY
-
-#### Command
-
-| Field  | Type      | Content                   | Expected |
-| ------ | --------- | ------------------------- | -------- |
-| CLA    | byte (1)  | Application Identifier    | 0x99     |
-| INS    | byte (1)  | Instruction ID            | 0x91     |
-| P1     | byte (1)  | Request User confirmation | No = 0   |
-| P2     | byte (1)  | Parameter 2               | ignored  |
-| L      | byte (1)  | Bytes in payload          | 32       |
-| PUBKEY | byte (32) | Master pubkey             |          |
-
-#### Response
-
-| Field   | Type     | Content     | Note                     |
-| ------- | -------- | ----------- | ------------------------ |
-| SW1-SW2 | byte (2) | Return code | see list of return codes |
-
-### INS_ALLOWLIST_GET_HASH
-
-#### Command
-
-| Field | Type     | Content                   | Expected |
-| ----- | -------- | ------------------------- | -------- |
-| CLA   | byte (1) | Application Identifier    | 0x99     |
-| INS   | byte (1) | Instruction ID            | 0x92     |
-| P1    | byte (1) | Request User confirmation | No = 0   |
-| P2    | byte (1) | Parameter 2               | ignored  |
-| L     | byte (1) | Bytes in payload          | 0        |
-
-#### Response
-
-| Field   | Type      | Content     | Note                     |
-| ------- | --------- | ----------- | ------------------------ |
-| HASH    | byte (32) | Public Key  |                          |
-| SW1-SW2 | byte (2)  | Return code | see list of return codes |
-
-### INS_ALLOWLIST_UPLOAD
-
-#### Command
-
-| Field | Type     | Content                | Expected  |
-| ----- | -------- | ---------------------- | --------- |
-| CLA   | byte (1) | Application Identifier | 0x99      |
-| INS   | byte (1) | Instruction ID         | 0x93      |
-| P1    | byte (1) | Payload desc           | 0 = init  |
-|       |          |                        | 1 = add   |
-|       |          |                        | 2 = last  |
-| P2    | byte (1) | ----                   | not used  |
-| L     | byte (1) | Bytes in payload       | (depends) |
-
-Packets/chunks contain data chunks that are described below
-
-##### Chunks/Packets
-
-* Chunk idx = 0 (init is expected to be empty)
-
-| Field | Type     | Content    | Expected |
-| ----- | -------- | ---------- | -------- |
-| Chunk | byte (?) | Allow List | ...      |
-
-##### Allow List Structure
-
-| Field          | Type            | Content                         | Expected |
-| -------------- | --------------- | ------------------------------- | -------- |
-| Nonce          | bytes (4)       | Monotonically increasing number |          |
-| Item Count (N) | bytes (4)       | Number of items in the list     |          |
-| Signature      | bytes (64)      | Ed25519 Signature               |          |
-| Item x N       | bytes (32) \* N | Pubkeys to allow                |          |
-
-#### Response
-
-| Field   | Type     | Content     | Note                     |
-| ------- | -------- | ----------- | ------------------------ |
-| SW1-SW2 | byte (2) | Return code | see list of return codes |

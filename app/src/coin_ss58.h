@@ -1,5 +1,5 @@
 /*******************************************************************************
-*   (c) 2018 Zondax GmbH
+*  (c) 2020 Zondax GmbH
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -14,3 +14,17 @@
 *  limitations under the License.
 ********************************************************************************/
 #pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define COIN_ADDR_TYPE_POLKADOT         0
+#define COIN_ADDR_TYPE_KUSAMA           2
+#define COIN_ADDR_TYPE_EDGEWARE         7
+#define COIN_ADDR_TYPE_KULUPU           16
+#define COIN_ADDR_TYPE_DOTHEREUM        20
+
+#ifdef __cplusplus
+}
+#endif
