@@ -1,5 +1,5 @@
 #*******************************************************************************
-#*   (c) 2020 Zondax GmbH
+#*   (c) 2019 -2022 Zondax GmbH
 #*
 #*  Licensed under the Apache License, Version 2.0 (the "License");
 #*  you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 #*  limitations under the License.
 #********************************************************************************
 cmake_minimum_required(VERSION 3.0)
-project(ledger-kusama VERSION 0.0.0)
+project(ledger-statemint VERSION 0.0.0)
 enable_testing()
 
 cmake_policy(SET CMP0025 NEW)
@@ -35,6 +35,11 @@ if(ENABLE_FUZZING)
     add_definitions(-DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION=1)
     SET(ENABLE_SANITIZERS ON CACHE BOOL "Sanitizer automatically enabled" FORCE)
     SET(CMAKE_BUILD_TYPE Debug)
+
+    if (DEFINED ENV{FUZZ_LOGGING})
+        add_definitions(-DFUZZING_LOGGING)
+        message(FATAL_ERROR "Fuzz logging enabled")
+    endif()
 
     set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,bugprone-*,cert-*,clang-analyzer-*,-cert-err58-cpp,misc-*)
 
@@ -112,7 +117,7 @@ file(GLOB_RECURSE LIB_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/app/src/parser.c
         ${CMAKE_CURRENT_SOURCE_DIR}/app/src/parser_impl.c
         ${CMAKE_CURRENT_SOURCE_DIR}/app/src/parser_txdef.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/app/src/substrate*.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/app/src/substrate/substrate*.c
         )
 
 add_library(app_lib STATIC ${LIB_SRC})
@@ -122,6 +127,7 @@ target_include_directories(app_lib PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/app/src
         ${CMAKE_CURRENT_SOURCE_DIR}/app/src/lib
         ${CMAKE_CURRENT_SOURCE_DIR}/app/src/common
+        ${CMAKE_CURRENT_SOURCE_DIR}/app/src/substrate
         )
 
 ##############################################################

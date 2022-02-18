@@ -1,5 +1,5 @@
 /*******************************************************************************
-*   (c) 2020 Zondax GmbH
+*   (c) 2018 - 2022 Zondax GmbH
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 #include "coin.h"
 #include "zxerror.h"
 #include "zxmacros.h"
+#include "zxformat.h"
 #include "app_mode.h"
 #include "crypto.h"
 
@@ -37,6 +38,7 @@ zxerr_t addr_getItem(int8_t displayIdx,
     char buffer[30];
     snprintf(buffer, sizeof(buffer), "addr_getItem %d/%d", displayIdx, pageIdx);
     zemu_log_stack(buffer);
+
     switch (displayIdx) {
         case 0:
             snprintf(outKey, outKeyLen, "Address");

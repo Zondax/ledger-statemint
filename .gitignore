@@ -47,6 +47,7 @@
 # Kernel Module Compile Results
 *.mod*
 *.cmd
+<<<<<<< HEAD
 .tmp_versions/
 modules.order
 Module.symvers
@@ -84,3 +85,33 @@ tests_zemu/yarn.lock
 /fuzz/corpora
 /tests_tools/target/
 !/tests_tools/neon/yarn.lock
+=======
+
+##########################
+
+tests_zemu/.yarn/*
+tests_zemu/!.yarn/patches
+tests_zemu/!.yarn/releases
+tests_zemu/!.yarn/plugins
+tests_zemu/!.yarn/sdks
+tests_zemu/!.yarn/versions
+tests_zemu/.pnp.*
+
+#########################
+
+.vscode
+.idea
+
+node_modules
+fuzz/corpora
+
+!build/.gitkeep
+build/*
+cmake-build-debug
+
+tests_zemu/snapshots-tmp
+tests_zemu/yarn.lock
+tests_tools/target
+fuzz-*.log
+/scan-build
+>>>>>>> update/main

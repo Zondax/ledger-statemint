@@ -1,5 +1,5 @@
 /*******************************************************************************
-*   (c) 2020 Zondax GmbH
+*   (c) 2019 - 2022 Zondax GmbH
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
 #include "tx.h"
 #include "view.h"
 #include "app_mode.h"
+#include "zxformat.h"
 
 void secret_accept() {
 #ifdef APP_SECRET_MODE_ENABLED

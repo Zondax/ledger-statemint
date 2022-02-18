@@ -1,6 +1,6 @@
 #*******************************************************************************
 #   Ledger App
-#   (c) 2018-2021 Zondax GmbH
+#   (c) 2018-2022 Zondax GmbH
 #   (c) 2017 Ledger
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -69,20 +69,21 @@ include $(CURDIR)/Makefile.version
 
 $(info COIN  = [$(COIN)])
 
-ifeq ($(COIN),KSM)
+ifeq ($(COIN),DOT)
 # Main app configuration
 DEFINES += APP_STANDARD
 ifeq ($(TARGET_NAME),TARGET_NANOX)
 DEFINES += SUBSTRATE_PARSER_FULL
 endif
-APPNAME = "Kusama"
-APPPATH = "44'/434'" --path "44'/354'"
+APPNAME = "Statemint"
+APPPATH = "44'/354'"
 
 else ifeq ($(COIN),DOT_XL)
+
 # XL app configuration
 DEFINES += APP_STANDARD SUBSTRATE_PARSER_FULL
-APPNAME = "Kusama XL"
-APPPATH = "44'/434'"  --path "44'/354'"
+APPNAME = "Statemint XL"
+APPPATH = "44'/354'"
 
 else
 define error_message
@@ -95,21 +96,25 @@ endef
 $(error "$(error_message)")
 endif
 
-APP_LOAD_PARAMS = --appFlags 0x200 --delete $(COMMON_LOAD_PARAMS) --path $(APPPATH)
+APP_LOAD_PARAMS = --delete $(COMMON_LOAD_PARAMS) --path $(APPPATH) --curve ed25519
 
 ifeq ($(TARGET_NAME),TARGET_NANOS)
-APP_STACK_SIZE:=3472
+APP_LOAD_PARAMS += --appFlags 0x000
+APP_STACK_SIZE:=3216
 ICONNAME:=$(CURDIR)/nanos_icon.gif
 OUTPUT_ELF ?= $(CURDIR)/output/app_s.elf
 OUTPUT_INSTALLER := $(CURDIR)/pkg/installer_s.sh
 endif
 
 ifeq ($(TARGET_NAME),TARGET_NANOX)
+APP_LOAD_PARAMS += --appFlags 0x200
+SCRIPT_LD:=$(CURDIR)/script_x.ld
 ICONNAME:=$(CURDIR)/nanox_icon.gif
 OUTPUT_ELF ?= $(CURDIR)/output/app_x.elf
-OUTPUT_INSTALLER:= $(CURDIR)/pkg/installer_x.sh
+OUTPUT_INSTALLER:= $(CURDIR)/pkg/installer_XL.sh
 endif
 
+$(info TARGET_NAME  = [$(TARGET_NAME)])
 $(info ICONNAME  = [$(ICONNAME)])
 
 ifndef ICONNAME
@@ -119,7 +124,6 @@ endif
 ############
 # Platform
 
-DEFINES       += UNUSED\(x\)=\(void\)x
 DEFINES       += PRINTF\(...\)=
 
 APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
@@ -159,6 +163,8 @@ endif
 
 # X specific
 
+# App specific
+
 #Feature temporarily disabled
 DEFINES   += LEDGER_SPECIFIC
 
@@ -183,7 +189,7 @@ endif
 #########################
 
 CC := $(CLANGPATH)clang
-CFLAGS += -O3 -Os -Wno-unknown-pragmas -Wno-unused-parameter
+CFLAGS += -O3 -Os -Wno-unknown-pragmas -Wno-unused-parameter -Wvla
 
 AS := $(GCCPATH)arm-none-eabi-gcc
 AFLAGS +=
