@@ -141,6 +141,10 @@ clean: clean_output clean_build
 listvariants:
 	$(call run_docker,$(DOCKER_BOLOS_SDKS),make -C $(DOCKER_APP_SRC) listvariants)
 
+.PHONY: version
+version:
+	$(call run_docker,$(DOCKER_BOLOS_SDKS),make -C $(DOCKER_APP_SRC) version)
+
 .PHONY: shellS
 shellS:
 	$(call run_docker,$(DOCKER_BOLOS_SDKS) -t,bash)
@@ -207,7 +211,6 @@ dev_ca2: check_python
 .PHONY: dev_ca_delete2
 dev_ca_delete2: check_python
 	@python -m ledgerblue.resetCustomCA --targetId 0x33000004
-
 ########################## VUE Section ###############################
 
 .PHONY: vue_install_js_link

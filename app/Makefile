@@ -62,7 +62,7 @@ $(info ************ FULL PARSER ENABLED ************)
 endif
 
 ifndef COIN
-COIN=KSM
+COIN=DOT
 endif
 
 include $(CURDIR)/Makefile.version
@@ -246,7 +246,11 @@ dep/%.d: %.c Makefile
 .PHONY: listvariants
 listvariants:
 ifeq ($(TARGET_NAME),TARGET_NANOS)
-	@echo VARIANTS COIN KSM KSM_XL
+	@echo VARIANTS COIN DOT DOT_XL
 else ifeq ($(TARGET_NAME),TARGET_NANOX)
-	@echo VARIANTS COIN KSM
+	@echo VARIANTS COIN DOT
 endif
+
+.PHONY: version
+version:
+	@echo "v$(APPVERSION)" > app.version
