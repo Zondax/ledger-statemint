@@ -47,46 +47,6 @@
 # Kernel Module Compile Results
 *.mod*
 *.cmd
-<<<<<<< HEAD
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-\cmake-build-debug
-\.idea/
-/tmp/
-/deps/nano2-sdk/
-
-# Created by cmake
-googletest-download/
-googletest-src/
-googletest-build/
-CMakeFiles/
-CMakeCache.txt
-unittests
-*.cmake
-Testing/
-cmake-build-fuzz/
-
-# Others
-/cmake-build-debug/
-/cmake-build-fuzz/
-\.idea
-/app/bin/
-/app/debug/
-/app/obj/
-
-tests_zemu/yarn.lock
-/tests_zemu/snapshots-tmp/
-/build
-/fuzz-*.log
-/fuzz/corpora
-/tests_tools/target/
-!/tests_tools/neon/yarn.lock
-=======
-
 ##########################
 
 tests_zemu/.yarn/*
@@ -114,4 +74,3 @@ tests_zemu/yarn.lock
 tests_tools/target
 fuzz-*.log
 /scan-build
->>>>>>> update/main
