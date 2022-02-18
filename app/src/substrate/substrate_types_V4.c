@@ -166,7 +166,7 @@ parser_error_t _readProxyType_V4(parser_context_t* c, pd_ProxyType_V4_t* v)
     CHECK_INPUT()
 
     CHECK_ERROR(_readUInt8(c, &v->value))
-    if (v->value > 7) {
+    if (v->value > 6) {
         return parser_value_out_of_range;
     }
 
