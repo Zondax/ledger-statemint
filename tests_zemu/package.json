@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Zondax/ledger-kusama"
+    "url": "git+https://github.com/Zondax/ledger-statemint"
   },
   "keywords": [
     "Zondax",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@zondax/ledger-substrate": "^0.24.0",
-    "@zondax/zemu": "^0.21.1"
+    "@zondax/zemu": "^0.25.1"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
