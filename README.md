@@ -5,7 +5,8 @@
 
 ---
 
-![zondax](docs/zondax.jpg)
+![zondax](docs/zondax_light.jpg#gh-dark-mode-only)
+![zondax](docs/zondax_dark.jpg#gh-light-mode-only)
 
 _Please visit our website at [zondax.ch](https://www.zondax.ch)_
 
