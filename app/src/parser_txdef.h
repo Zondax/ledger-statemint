@@ -32,12 +32,13 @@ extern "C" {
 #endif
 
 typedef struct {
-    pd_CallIndex_t   callIndex;
+    pd_CallIndex_t callIndex;
     pd_Method_t method;
 
     pd_ExtrinsicEra_t era;
     pd_CompactIndex_t nonce;
     pd_CompactBalance_t tip;
+    compactInt_t assetId;
     uint32_t specVersion;
     uint32_t transactionVersion;
 

@@ -218,11 +218,8 @@ TEST(SCALE, TransferTXBadSpec) {
     parser_init(&ctx, buffer, bufferLen);
 
     parser_tx_t tx;
-    uint64_t tmp;
-    char tmpBuffer[100];
-    uint8_t pageCount = 0;
 
     err = _readTx(&ctx, &tx);
-    EXPECT_EQ(err, parser_tx_version_not_supported) << parser_getErrorDescription(err);
+    EXPECT_EQ(err, parser_spec_not_supported) << parser_getErrorDescription(err);
 }
 
