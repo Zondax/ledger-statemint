@@ -16,7 +16,7 @@
 
 import Zemu, { DEFAULT_START_OPTIONS } from '@zondax/zemu'
 import { newStatemintApp } from '@zondax/ledger-substrate'
-import {APP_SEED} from './common'
+import { APP_SEED } from './common'
 import { txBalances_transfer } from './zemu_blobs'
 
 // @ts-ignore
@@ -251,5 +251,4 @@ describe('SR25519', function () {
       await sim.close()
     }
   })
-
 })

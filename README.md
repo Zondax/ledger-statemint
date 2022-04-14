@@ -28,8 +28,7 @@ Please:
 - **Do not use in production**
 - **Do not use a Ledger device with funds for development purposes.**
 - **Have a separate and marked device that is used ONLY for development and testing**
-
-# Statemint  4.601.x
+# Statemint  5.800.x
 
 ## System
 
@@ -40,7 +39,6 @@ Please:
 |Set heap pages |    | :heavy_check_mark: | :heavy_check_mark: | `u64` pages <br/> |
 |Set code |    | :heavy_check_mark: | :heavy_check_mark: | `Vecu8` code <br/> |
 |Set code without checks |    | :heavy_check_mark: | :heavy_check_mark: | `Vecu8` code <br/> |
-|Set changes trie config |    |   |   | `OptionChangesTrieConfiguration` changes_trie_config <br/> |
 |Set storage |    |   |   | `VecKeyValue` items <br/> |
 |Kill storage |    |   |   | `VecKey` keys <br/> |
 |Kill prefix |    |   |   | `Key` prefix <br/>`u32` subkeys <br/> |
@@ -99,6 +97,15 @@ Please:
 
 | Name        | Light | XL | Nesting | Arguments |
 | :---------- |:------------:|:--------:|:--------:|:--------|
+|Service overweight |    |   |   | `OverweightIndex` index <br/>`Weight` weight_limit <br/> |
+|Suspend xcm execution |    | :heavy_check_mark: |   |  |
+|Resume xcm execution |    | :heavy_check_mark: |   |  |
+|Update suspend threshold |    | :heavy_check_mark: |   | `u32` new_ <br/> |
+|Update drop threshold |    | :heavy_check_mark: |   | `u32` new_ <br/> |
+|Update resume threshold |    | :heavy_check_mark: |   | `u32` new_ <br/> |
+|Update threshold weight |    | :heavy_check_mark: |   | `Weight` new_ <br/> |
+|Update weight restrict decay |    | :heavy_check_mark: |   | `Weight` new_ <br/> |
+|Update xcmp max individual weight |    | :heavy_check_mark: |   | `Weight` new_ <br/> |
 
 ## PolkadotXcm
 
@@ -128,6 +135,7 @@ Please:
 |Batch | :heavy_check_mark:  | :heavy_check_mark: |   | `VecCall` calls <br/> |
 |As derivative |    |   |   | `u16` index <br/>`Call` call <br/> |
 |Batch all | :heavy_check_mark:  | :heavy_check_mark: |   | `VecCall` calls <br/> |
+|Dispatch as |    |   |   | `BoxPalletsOrigin` as_origin <br/>`Call` call <br/> |
 
 ## Multisig
 
@@ -180,6 +188,8 @@ Please:
 |Cancel approval |    | :heavy_check_mark: | :heavy_check_mark: | `Compactu32` id <br/>`LookupasStaticLookupSource` delegate <br/> |
 |Force cancel approval |    | :heavy_check_mark: | :heavy_check_mark: | `Compactu32` id <br/>`LookupasStaticLookupSource` owner <br/>`LookupasStaticLookupSource` delegate <br/> |
 |Transfer approved |    | :heavy_check_mark: | :heavy_check_mark: | `Compactu32` id <br/>`LookupasStaticLookupSource` owner <br/>`LookupasStaticLookupSource` destination <br/>`Compactu128` amount <br/> |
+|Touch |    | :heavy_check_mark: |   | `Compactu32` id <br/> |
+|Refund |    | :heavy_check_mark: |   | `Compactu32` id <br/>`bool` allow_burn <br/> |
 
 ## Uniques
 
