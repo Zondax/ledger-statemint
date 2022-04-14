@@ -220,6 +220,6 @@ TEST(SCALE, TransferTXBadSpec) {
     parser_tx_t tx;
 
     err = _readTx(&ctx, &tx);
-    EXPECT_EQ(err, parser_spec_not_supported) << parser_getErrorDescription(err);
+    EXPECT_EQ(err, parser_tx_version_not_supported) << parser_getErrorDescription(err);
 }
 
