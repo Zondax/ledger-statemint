@@ -59,7 +59,7 @@ const char *parser_getErrorDescription(parser_error_t err) {
             return "display_idx_out_of_range";
         case parser_display_page_out_of_range:
             return "display_page_out_of_range";
-        // Coin specific
+            // Coin specific
         case parser_spec_not_supported:
             return "Spec version not supported";
         case parser_tx_version_not_supported:
@@ -356,13 +356,13 @@ parser_error_t _checkVersions(parser_context_t *c) {
     return parser_ok;
 }
 
-uint8_t __address_type;
+uint16_t __address_type;
 
-uint8_t _getAddressType() {
+uint16_t _getAddressType() {
     return __address_type;
 }
 
-uint8_t _detectAddressType(const parser_context_t *c) {
+uint16_t _detectAddressType(const parser_context_t *c) {
     char hashstr[65];
     uint8_t pc;
 
@@ -390,7 +390,7 @@ parser_error_t _readTx(parser_context_t *c, parser_tx_t *v) {
     CHECK_ERROR(_readEra(c, &v->era))
     CHECK_ERROR(_readCompactIndex(c, &v->nonce))
     CHECK_ERROR(_readCompactBalance(c, &v->tip))
-    CHECK_ERROR(_readCompactInt(c,&v->assetId))
+    CHECK_ERROR(_readOptionChargeAssetIdOf(c,&v->assetId))
     CHECK_ERROR(_readUInt32(c, &v->specVersion))
     CHECK_ERROR(_readUInt32(c, &v->transactionVersion))
     CHECK_ERROR(_readHash(c, &v->genesisHash))
@@ -434,8 +434,10 @@ parser_error_t _readAddress(parser_context_t *c, pd_Address_t *v) {
         case 0xFE: {
             compactInt_t ci;
             CHECK_ERROR(_readCompactInt(c, &ci))
+
             v->type = eAddressIndex;
             CHECK_ERROR(_getValue(&ci, &v->idx))
+
             if (v->idx <= 0xffffffffu) {
                 return parser_unexpected_value;
             }

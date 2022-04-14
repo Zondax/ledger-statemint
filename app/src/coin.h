@@ -14,4 +14,5 @@
 *  limitations under the License.
 ********************************************************************************/
 #pragma once
+
 #include "substrate_coin.h"
