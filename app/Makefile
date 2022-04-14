@@ -1,7 +1,7 @@
 #*******************************************************************************
-#   Ledger App
-#   (c) 2018 - 2022 Zondax GmbH
-#   (c) 2017 Ledger
+#  Ledger App
+#  (c) 2019 - 2022 Zondax GmbH
+#  (c) 2017 Ledger
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -72,14 +72,13 @@ $(info COIN  = [$(COIN)])
 ifeq ($(COIN),DOT)
 # Main app configuration
 DEFINES += APP_STANDARD
-ifeq ($(TARGET_NAME),TARGET_NANOX)
+ifneq ($(TARGET_NAME),TARGET_NANOS)
 DEFINES += SUBSTRATE_PARSER_FULL
 endif
 APPNAME = "Statemint"
 APPPATH = "44'/354'"
 
 else ifeq ($(COIN),DOT_XL)
-
 # XL app configuration
 DEFINES += APP_STANDARD SUBSTRATE_PARSER_FULL
 APPNAME = "Statemint XL"
@@ -96,7 +95,7 @@ endef
 $(error "$(error_message)")
 endif
 
-APP_LOAD_PARAMS = --delete $(COMMON_LOAD_PARAMS) --path $(APPPATH) --curve ed25519
+APP_LOAD_PARAMS = --curve ed25519 --delete $(COMMON_LOAD_PARAMS) --path $(APPPATH)
 
 ifeq ($(TARGET_NAME),TARGET_NANOS)
 APP_LOAD_PARAMS += --appFlags 0x000
