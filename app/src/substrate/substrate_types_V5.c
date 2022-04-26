@@ -421,7 +421,7 @@ parser_error_t _toStringDestroyWitness_V5(
     CLEAN_AND_CHECK()
 
     // First measure number of pages
-    uint8_t pages[3];
+    uint8_t pages[3] = { 0 };
     CHECK_ERROR(_toStringCompactu32(&v->accounts, outValue, outValueLen, 0, &pages[0]))
     CHECK_ERROR(_toStringCompactu32(&v->sufficients, outValue, outValueLen, 0, &pages[1]))
     CHECK_ERROR(_toStringCompactu32(&v->approvals, outValue, outValueLen, 0, &pages[2]))
@@ -636,7 +636,7 @@ parser_error_t _toStringTimepoint_V5(
     CLEAN_AND_CHECK()
 
     // First measure number of pages
-    uint8_t pages[2];
+    uint8_t pages[2] = { 0 };
     CHECK_ERROR(_toStringBlockNumber(&v->height, outValue, outValueLen, 0, &pages[0]))
     CHECK_ERROR(_toStringu32(&v->index, outValue, outValueLen, 0, &pages[1]))
 
