@@ -99,8 +99,12 @@ static const char* STR_ME_FORCE_CANCEL_APPROVAL = "Force cancel approval";
 static const char* STR_ME_TRANSFER_APPROVED = "Transfer approved";
 static const char* STR_ME_TOUCH = "Touch";
 static const char* STR_ME_REFUND = "Refund";
+static const char* STR_ME_REDEPOSIT = "Redeposit";
 static const char* STR_ME_FREEZE_CLASS = "Freeze class";
 static const char* STR_ME_THAW_CLASS = "Thaw class";
+static const char* STR_ME_SET_ATTRIBUTE = "Set attribute";
+static const char* STR_ME_CLEAR_ATTRIBUTE = "Clear attribute";
+static const char* STR_ME_SET_CLASS_METADATA = "Set class metadata";
 static const char* STR_ME_CLEAR_CLASS_METADATA = "Clear class metadata";
 
 // Items names
