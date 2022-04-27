@@ -235,12 +235,25 @@ typedef struct {
     pd_LookupasStaticLookupSource_V5_t owner;
 } pd_uniques_mint_V5_t;
 
+#define PD_CALL_UNIQUES_BURN_V5 4
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_Compactu32_t instance;
+    pd_OptionLookupasStaticLookupSource_V5_t check_owner;
+} pd_uniques_burn_V5_t;
+
 #define PD_CALL_UNIQUES_TRANSFER_V5 5
 typedef struct {
     pd_Compactu32_t class_;
     pd_Compactu32_t instance;
     pd_LookupasStaticLookupSource_V5_t dest;
 } pd_uniques_transfer_V5_t;
+
+#define PD_CALL_UNIQUES_REDEPOSIT_V5 6
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_VecInstanceId_V5_t instances;
+} pd_uniques_redeposit_V5_t;
 
 #define PD_CALL_UNIQUES_FREEZE_V5 7
 typedef struct {
@@ -285,6 +298,13 @@ typedef struct {
     pd_LookupasStaticLookupSource_V5_t delegate;
 } pd_uniques_approve_transfer_V5_t;
 
+#define PD_CALL_UNIQUES_CANCEL_APPROVAL_V5 14
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_Compactu32_t instance;
+    pd_OptionLookupasStaticLookupSource_V5_t maybe_check_delegate;
+} pd_uniques_cancel_approval_V5_t;
+
 #define PD_CALL_UNIQUES_FORCE_ASSET_STATUS_V5 15
 typedef struct {
     pd_Compactu32_t class_;
@@ -296,11 +316,41 @@ typedef struct {
     pd_bool_t is_frozen;
 } pd_uniques_force_asset_status_V5_t;
 
+#define PD_CALL_UNIQUES_SET_ATTRIBUTE_V5 16
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_OptionInstanceId_V5_t maybe_instance;
+    pd_BoundedVecu8_V5_t key;
+    pd_BoundedVecu8_V5_t value;
+} pd_uniques_set_attribute_V5_t;
+
+#define PD_CALL_UNIQUES_CLEAR_ATTRIBUTE_V5 17
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_OptionInstanceId_V5_t maybe_instance;
+    pd_BoundedVecu8_V5_t key;
+} pd_uniques_clear_attribute_V5_t;
+
+#define PD_CALL_UNIQUES_SET_METADATA_V5 18
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_Compactu32_t instance;
+    pd_BoundedVecu8_V5_t data;
+    pd_bool_t is_frozen;
+} pd_uniques_set_metadata_V5_t;
+
 #define PD_CALL_UNIQUES_CLEAR_METADATA_V5 19
 typedef struct {
     pd_Compactu32_t class_;
     pd_Compactu32_t instance;
 } pd_uniques_clear_metadata_V5_t;
+
+#define PD_CALL_UNIQUES_SET_CLASS_METADATA_V5 20
+typedef struct {
+    pd_Compactu32_t class_;
+    pd_BoundedVecu8_V5_t data;
+    pd_bool_t is_frozen;
+} pd_uniques_set_class_metadata_V5_t;
 
 #define PD_CALL_UNIQUES_CLEAR_CLASS_METADATA_V5 21
 typedef struct {
@@ -346,7 +396,9 @@ typedef union {
     pd_uniques_force_create_V5_t uniques_force_create_V5;
     pd_uniques_destroy_V5_t uniques_destroy_V5;
     pd_uniques_mint_V5_t uniques_mint_V5;
+    pd_uniques_burn_V5_t uniques_burn_V5;
     pd_uniques_transfer_V5_t uniques_transfer_V5;
+    pd_uniques_redeposit_V5_t uniques_redeposit_V5;
     pd_uniques_freeze_V5_t uniques_freeze_V5;
     pd_uniques_thaw_V5_t uniques_thaw_V5;
     pd_uniques_freeze_class_V5_t uniques_freeze_class_V5;
@@ -354,8 +406,13 @@ typedef union {
     pd_uniques_transfer_ownership_V5_t uniques_transfer_ownership_V5;
     pd_uniques_set_team_V5_t uniques_set_team_V5;
     pd_uniques_approve_transfer_V5_t uniques_approve_transfer_V5;
+    pd_uniques_cancel_approval_V5_t uniques_cancel_approval_V5;
     pd_uniques_force_asset_status_V5_t uniques_force_asset_status_V5;
+    pd_uniques_set_attribute_V5_t uniques_set_attribute_V5;
+    pd_uniques_clear_attribute_V5_t uniques_clear_attribute_V5;
+    pd_uniques_set_metadata_V5_t uniques_set_metadata_V5;
     pd_uniques_clear_metadata_V5_t uniques_clear_metadata_V5;
+    pd_uniques_set_class_metadata_V5_t uniques_set_class_metadata_V5;
     pd_uniques_clear_class_metadata_V5_t uniques_clear_class_metadata_V5;
 #endif
 } pd_MethodBasic_V5_t;
