@@ -192,8 +192,9 @@ parser_error_t _readOptionChargeAssetIdOf(parser_context_t* c, pd_OptionChargeAs
 {
     CHECK_ERROR(_readUInt8(c, &v->some))
     if (v->some > 0) {
-        CHECK_ERROR(_readUInt32(c, &v->value))
+        CHECK_ERROR(_readu32(c, &v->value))
     }
+    return parser_ok;
 }
 
 parser_error_t _readVecHeader(parser_context_t* c, pd_VecHeader_t* v) {
