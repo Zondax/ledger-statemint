@@ -31,6 +31,10 @@ static const char* STR_MO_MULTISIG = "Multisig";
 static const char* STR_MO_PROXY = "Proxy";
 static const char* STR_MO_ASSETS = "Assets";
 static const char* STR_MO_UNIQUES = "Uniques";
+static const char* STR_MO_PARACHAINSYSTEM = "Parachainsystem";
+static const char* STR_MO_AUTHORSHIP = "Authorship";
+static const char* STR_MO_POLKADOTXCM = "Polkadotxcm";
+static const char* STR_MO_DMPQUEUE = "Dmpqueue";
 
 // Methods names
 static const char* STR_ME_FILL_BLOCK = "Fill block";
@@ -107,6 +111,34 @@ static const char* STR_ME_CLEAR_ATTRIBUTE = "Clear attribute";
 static const char* STR_ME_SET_CLASS_METADATA = "Set class metadata";
 static const char* STR_ME_CLEAR_CLASS_METADATA = "Clear class metadata";
 static const char* STR_ME_SET_ACCEPT_OWNERSHIP = "Set accept ownership";
+static const char* STR_ME_FORCE_BATCH = "Force batch";
+static const char* STR_ME_FREEZE_COLLECTION = "Freeze collection";
+static const char* STR_ME_THAW_COLLECTION = "Thaw collection";
+static const char* STR_ME_FORCE_ITEM_STATUS = "Force item status";
+static const char* STR_ME_SET_COLLECTION_METADATA = "Set collection metadata";
+static const char* STR_ME_CLEAR_COLLECTION_METADATA = "Clear collection metadata";
+static const char* STR_ME_SET_COLLECTION_MAX_SUPPLY = "Set collection max supply";
+static const char* STR_ME_SET_STORAGE = "Set storage";
+static const char* STR_ME_KILL_STORAGE = "Kill storage";
+static const char* STR_ME_KILL_PREFIX = "Kill prefix";
+static const char* STR_ME_SET_VALIDATION_DATA = "Set validation data";
+static const char* STR_ME_SUDO_SEND_UPWARD_MESSAGE = "Sudo send upward message";
+static const char* STR_ME_AUTHORIZE_UPGRADE = "Authorize upgrade";
+static const char* STR_ME_ENACT_AUTHORIZED_UPGRADE = "Enact authorized upgrade";
+static const char* STR_ME_SET_UNCLES = "Set uncles";
+static const char* STR_ME_SERVICE_OVERWEIGHT = "Service overweight";
+static const char* STR_ME_SEND = "Send";
+static const char* STR_ME_TELEPORT_ASSETS = "Teleport assets";
+static const char* STR_ME_RESERVE_TRANSFER_ASSETS = "Reserve transfer assets";
+static const char* STR_ME_EXECUTE = "Execute";
+static const char* STR_ME_FORCE_XCM_VERSION = "Force xcm version";
+static const char* STR_ME_FORCE_DEFAULT_XCM_VERSION = "Force default xcm version";
+static const char* STR_ME_FORCE_SUBSCRIBE_VERSION_NOTIFY = "Force subscribe version notify";
+static const char* STR_ME_FORCE_UNSUBSCRIBE_VERSION_NOTIFY = "Force unsubscribe version notify";
+static const char* STR_ME_LIMITED_RESERVE_TRANSFER_ASSETS = "Limited reserve transfer assets";
+static const char* STR_ME_LIMITED_TELEPORT_ASSETS = "Limited teleport assets";
+static const char* STR_ME_AS_DERIVATIVE = "As derivative";
+static const char* STR_ME_DISPATCH_AS = "Dispatch as";
 
 // Items names
 static const char* STR_IT_ratio = "Ratio";
@@ -176,6 +208,19 @@ static const char* STR_IT_key = "Key";
 static const char* STR_IT_value = "Value";
 static const char* STR_IT_data = "Data";
 static const char* STR_IT_maybe_class = "Maybe class";
+static const char* STR_IT_collection = "Collection";
+static const char* STR_IT_item = "Item";
+static const char* STR_IT_maybe_item = "Maybe item";
+static const char* STR_IT_maybe_collection = "Maybe collection";
+static const char* STR_IT_max_supply = "Max supply";
+static const char* STR_IT_message = "Message";
+static const char* STR_IT_code_hash = "Code hash";
+static const char* STR_IT_new_uncles = "New uncles";
+static const char* STR_IT_assets = "Assets";
+static const char* STR_IT_fee_asset_item = "Fee asset item";
+static const char* STR_IT_location = "Location";
+static const char* STR_IT_xcm_version = "Xcm version";
+static const char* STR_IT_maybe_xcm_version = "Maybe xcm version";
 
 #ifdef __cplusplus
 }
