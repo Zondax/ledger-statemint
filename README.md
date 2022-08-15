@@ -28,7 +28,7 @@ Please:
 - **Do not use in production**
 - **Do not use a Ledger device with funds for development purposes.**
 - **Have a separate and marked device that is used ONLY for development and testing**
-# Statemint  7.9230.x
+# Statemint  7.9270.x
 
 ## System
 
@@ -97,7 +97,7 @@ Please:
 
 | Name        | Light | XL | Nesting | Arguments |
 | :---------- |:------------:|:--------:|:--------:|:--------|
-|Service overweight |    |   |   | `OverweightIndex` index <br/>`Weight` weight_limit <br/> |
+|Service overweight |    | :heavy_check_mark: |   | `OverweightIndex` index <br/>`Weight` weight_limit <br/> |
 |Suspend xcm execution |    | :heavy_check_mark: |   |  |
 |Resume xcm execution |    | :heavy_check_mark: |   |  |
 |Update suspend threshold |    | :heavy_check_mark: |   | `u32` new_ <br/> |
@@ -126,7 +126,7 @@ Please:
 
 | Name        | Light | XL | Nesting | Arguments |
 | :---------- |:------------:|:--------:|:--------:|:--------|
-|Service overweight |    |   |   | `OverweightIndex` index <br/>`Weight` weight_limit <br/> |
+|Service overweight |    | :heavy_check_mark: |   | `OverweightIndex` index <br/>`Weight` weight_limit <br/> |
 
 ## Utility
 
@@ -220,4 +220,6 @@ Please:
 |Clear collection metadata |    | :heavy_check_mark: |   | `CollectionId` collection <br/> |
 |Set accept ownership |    | :heavy_check_mark: |   | `OptionCollectionId` maybe_collection <br/> |
 |Set collection max supply |    | :heavy_check_mark: |   | `CollectionId` collection <br/>`u32` max_supply <br/> |
+|Set price |    | :heavy_check_mark: |   | `CollectionId` collection <br/>`ItemId` item <br/>`OptionItemPrice` price <br/>`OptionLookupasStaticLookupSource` whitelisted_buyer <br/> |
+|Buy item |    | :heavy_check_mark: |   | `CollectionId` collection <br/>`ItemId` item <br/>`ItemPrice` bid_price <br/> |
 
