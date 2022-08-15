@@ -32,6 +32,7 @@ extern "C" {
 #define PD_CALL_COLLATORSELECTION_V7 21
 #define PD_CALL_SESSION_V7 22
 #define PD_CALL_XCMPQUEUE_V7 30
+#define PD_CALL_DMPQUEUE_V7 33
 #define PD_CALL_UTILITY_V7 40
 #define PD_CALL_MULTISIG_V7 41
 #define PD_CALL_PROXY_V7 42
@@ -105,6 +106,12 @@ typedef struct {
 typedef struct {
 } pd_collatorselection_leave_intent_V7_t;
 
+#define PD_CALL_XCMPQUEUE_SERVICE_OVERWEIGHT_V7 0
+typedef struct {
+    pd_OverweightIndex_V7_t index;
+    pd_Weight_V7_t weight_limit;
+} pd_xcmpqueue_service_overweight_V7_t;
+
 #define PD_CALL_XCMPQUEUE_SUSPEND_XCM_EXECUTION_V7 1
 typedef struct {
 } pd_xcmpqueue_suspend_xcm_execution_V7_t;
@@ -142,6 +149,12 @@ typedef struct {
 typedef struct {
     pd_Weight_V7_t new_;
 } pd_xcmpqueue_update_xcmp_max_individual_weight_V7_t;
+
+#define PD_CALL_DMPQUEUE_SERVICE_OVERWEIGHT_V7 0
+typedef struct {
+    pd_OverweightIndex_V7_t index;
+    pd_Weight_V7_t weight_limit;
+} pd_dmpqueue_service_overweight_V7_t;
 
 #define PD_CALL_PROXY_ADD_PROXY_V7 1
 typedef struct {
@@ -373,6 +386,21 @@ typedef struct {
     pd_u32_t max_supply;
 } pd_uniques_set_collection_max_supply_V7_t;
 
+#define PD_CALL_UNIQUES_SET_PRICE_V7 24
+typedef struct {
+    pd_CollectionId_V7_t collection;
+    pd_ItemId_V7_t item;
+    pd_OptionItemPrice_V7_t price;
+    pd_OptionLookupasStaticLookupSource_V7_t whitelisted_buyer;
+} pd_uniques_set_price_V7_t;
+
+#define PD_CALL_UNIQUES_BUY_ITEM_V7 25
+typedef struct {
+    pd_CollectionId_V7_t collection;
+    pd_ItemId_V7_t item;
+    pd_ItemPrice_V7_t bid_price;
+} pd_uniques_buy_item_V7_t;
+
 #endif
 
 typedef union {
@@ -390,6 +418,7 @@ typedef union {
     pd_collatorselection_set_candidacy_bond_V7_t collatorselection_set_candidacy_bond_V7;
     pd_collatorselection_register_as_candidate_V7_t collatorselection_register_as_candidate_V7;
     pd_collatorselection_leave_intent_V7_t collatorselection_leave_intent_V7;
+    pd_xcmpqueue_service_overweight_V7_t xcmpqueue_service_overweight_V7;
     pd_xcmpqueue_suspend_xcm_execution_V7_t xcmpqueue_suspend_xcm_execution_V7;
     pd_xcmpqueue_resume_xcm_execution_V7_t xcmpqueue_resume_xcm_execution_V7;
     pd_xcmpqueue_update_suspend_threshold_V7_t xcmpqueue_update_suspend_threshold_V7;
@@ -398,6 +427,7 @@ typedef union {
     pd_xcmpqueue_update_threshold_weight_V7_t xcmpqueue_update_threshold_weight_V7;
     pd_xcmpqueue_update_weight_restrict_decay_V7_t xcmpqueue_update_weight_restrict_decay_V7;
     pd_xcmpqueue_update_xcmp_max_individual_weight_V7_t xcmpqueue_update_xcmp_max_individual_weight_V7;
+    pd_dmpqueue_service_overweight_V7_t dmpqueue_service_overweight_V7;
     pd_proxy_add_proxy_V7_t proxy_add_proxy_V7;
     pd_proxy_remove_proxy_V7_t proxy_remove_proxy_V7;
     pd_proxy_remove_proxies_V7_t proxy_remove_proxies_V7;
@@ -433,6 +463,8 @@ typedef union {
     pd_uniques_clear_collection_metadata_V7_t uniques_clear_collection_metadata_V7;
     pd_uniques_set_accept_ownership_V7_t uniques_set_accept_ownership_V7;
     pd_uniques_set_collection_max_supply_V7_t uniques_set_collection_max_supply_V7;
+    pd_uniques_set_price_V7_t uniques_set_price_V7;
+    pd_uniques_buy_item_V7_t uniques_buy_item_V7;
 #endif
 } pd_MethodBasic_V7_t;
 

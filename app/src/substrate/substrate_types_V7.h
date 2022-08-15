@@ -48,6 +48,10 @@ typedef struct {
 } pd_ItemId_V7_t;
 
 typedef struct {
+    pd_Balance_t value;
+} pd_ItemPrice_V7_t;
+
+typedef struct {
     uint8_t value;
     union {
         pd_AccountId_V7_t id;
@@ -75,6 +79,11 @@ typedef struct {
 typedef struct {
     pd_Call_t call;
 } pd_OpaqueCall_V7_t;
+
+typedef struct {
+    uint8_t some;
+    pd_ItemPrice_V7_t contained;
+} pd_OptionItemPrice_V7_t;
 
 typedef struct {
     uint8_t some;
@@ -114,6 +123,10 @@ typedef struct {
     uint8_t some;
     pd_ProxyType_V7_t contained;
 } pd_OptionProxyType_V7_t;
+
+typedef struct {
+    uint64_t value;
+} pd_OverweightIndex_V7_t;
 
 typedef struct {
     uint32_t value;
