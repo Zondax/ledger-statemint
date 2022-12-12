@@ -28,21 +28,21 @@ Please:
 - **Do not use in production**
 - **Do not use a Ledger device with funds for development purposes.**
 - **Have a separate and marked device that is used ONLY for development and testing**
-# Statemint 9.9320.x
+# Statemint 10.9330.x
 
 ## System
 
 | Name                    | Nano S | Nano S XL          | Nano SP/X          | Nesting            | Arguments                         |
 | ----------------------- | ------ | ------------------ | ------------------ | ------------------ | --------------------------------- |
 | Fill block              |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Perbill`ratio<br/>               |
-| Remark                  |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Vecu8`remark<br/>                |
+| Remark                  |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Bytes`remark<br/>                |
 | Set heap pages          |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `u64`pages<br/>                   |
 | Set code                |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Vecu8`code<br/>                  |
 | Set code without checks |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Vecu8`code<br/>                  |
 | Set storage             |        |                    |                    |                    | `VecKeyValue`items<br/>           |
 | Kill storage            |        |                    |                    |                    | `VecKey`keys<br/>                 |
 | Kill prefix             |        |                    |                    |                    | `Key`prefix<br/>`u32`subkeys<br/> |
-| Remark with event       |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Vecu8`remark<br/>                |
+| Remark with event       |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Bytes`remark<br/>                |
 
 ## ParachainSystem
 
@@ -168,7 +168,10 @@ Please:
 | --------------------- | ------ | ------------------ | ------------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Create                |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Compactu32`id<br/>`AccountIdLookupOfT`admin<br/>`Balance`min_balance<br/>                                                                                                                                              |
 | Force create          |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Compactu32`id<br/>`AccountIdLookupOfT`owner<br/>`bool`is_sufficient<br/>`Compactu128`min_balance<br/>                                                                                                                  |
-| Destroy               |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Compactu32`id<br/>`DestroyWitness`witness<br/>                                                                                                                                                                         |
+| Start destroy         |        | :heavy_check_mark: | :heavy_check_mark: |                    | `Compactu32`id<br/>                                                                                                                                                                                                     |
+| Destroy accounts      |        | :heavy_check_mark: | :heavy_check_mark: |                    | `Compactu32`id<br/>                                                                                                                                                                                                     |
+| Destroy approvals     |        | :heavy_check_mark: | :heavy_check_mark: |                    | `Compactu32`id<br/>                                                                                                                                                                                                     |
+| Finish destroy        |        | :heavy_check_mark: | :heavy_check_mark: |                    | `Compactu32`id<br/>                                                                                                                                                                                                     |
 | Mint                  |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Compactu32`id<br/>`AccountIdLookupOfT`beneficiary<br/>`Compactu128`amount<br/>                                                                                                                                         |
 | Burn                  |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Compactu32`id<br/>`AccountIdLookupOfT`who<br/>`Compactu128`amount<br/>                                                                                                                                                 |
 | Transfer              |        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Compactu32`id<br/>`AccountIdLookupOfT`target<br/>`Compactu128`amount<br/>                                                                                                                                              |
