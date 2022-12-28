@@ -189,6 +189,7 @@ parser_error_t _readHash(parser_context_t* c, pd_Hash_t* v) {
 
 parser_error_t _readOptionChargeAssetIdOf(parser_context_t* c, pd_OptionChargeAssetIdOf_t* v)
 {
+    CHECK_INPUT()
     CHECK_ERROR(_readUInt8(c, &v->some))
     if (v->some > 0) {
         CHECK_ERROR(_readu32(c, &v->value))
@@ -553,9 +554,13 @@ parser_error_t _toStringOptionChargeAssetIdOf(
     uint8_t* pageCount)
 {
     CLEAN_AND_CHECK()
-    if (v->some != 0) {
-        CHECK_ERROR(_toStringu32(&v->value, outValue, outValueLen, pageIdx, pageCount))
+
+    *pageCount = 1;
+    if (v->some == 0) {
+        snprintf(outValue, outValueLen, "0");
+        return parser_ok;
     }
+    CHECK_ERROR(_toStringu32(&v->value, outValue, outValueLen, pageIdx, pageCount));
     return parser_ok;
 }
 
