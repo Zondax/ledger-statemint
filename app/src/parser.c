@@ -29,15 +29,16 @@ void __assert_fail(const char * assertion, const char * file, unsigned int line,
 }
 #endif
 
-#define FIELD_FIXED_TOTAL_COUNT 7
+#define FIELD_FIXED_TOTAL_COUNT 8
 
 #define FIELD_METHOD        0
 #define FIELD_NETWORK       1
 #define FIELD_NONCE         2
 #define FIELD_TIP           3
-#define FIELD_ERA_PHASE     4
-#define FIELD_ERA_PERIOD    5
-#define FIELD_BLOCK_HASH    6
+#define FIELD_ASSET_ID      4
+#define FIELD_ERA_PHASE     5
+#define FIELD_ERA_PERIOD    6
+#define FIELD_BLOCK_HASH    7
 
 #define EXPERT_FIELDS_TOTAL_COUNT 5
 
@@ -215,6 +216,16 @@ parser_error_t parser_getItem(const parser_context_t *ctx,
         }
 
         if (!parser_show_tip(ctx)) {
+            displayIdx++;
+        }
+
+        if (displayIdx == FIELD_ASSET_ID) {
+            snprintf(outKey, outKeyLen, "Fee paying asset");
+            err = _toStringOptionChargeAssetIdOf(&ctx->tx_obj->assetId, outVal, outValLen, pageIdx, pageCount);
+            return err;
+        }
+
+        if (!parser_show_expert_fields()) {
             displayIdx++;
         }
 
