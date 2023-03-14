@@ -34,7 +34,7 @@ const defaultOptions = {
 jest.setTimeout(180000)
 
 describe('Standard', function () {
-  test.each(models)('can start and stop container', async function (m) {
+  test.concurrent.each(models)('can start and stop container', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -43,7 +43,7 @@ describe('Standard', function () {
     }
   })
 
-  test.each(models)('main menu', async function (m) {
+  test.concurrent.each(models)('main menu', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -53,7 +53,7 @@ describe('Standard', function () {
     }
   })
 
-  test.each(models)('get app version', async function (m) {
+  test.concurrent.each(models)('get app version', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -73,7 +73,7 @@ describe('Standard', function () {
     }
   })
 
-  test.each(models)('get address', async function (m) {
+  test.concurrent.each(models)('get address', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -96,7 +96,7 @@ describe('Standard', function () {
     }
   })
 
-  test.each(models)('show address', async function (m) {
+  test.concurrent.each(models)('show address', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -125,7 +125,7 @@ describe('Standard', function () {
     }
   })
 
-  test.each(models)('show address - reject', async function (m) {
+  test.concurrent.each(models)('show address - reject', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -147,7 +147,7 @@ describe('Standard', function () {
     }
   })
 
-  test.each(models)('sign basic normal', async function (m) {
+  test.concurrent.each(models)('sign basic normal', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -181,14 +181,14 @@ describe('Standard', function () {
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
-      const valid = ed25519.verify(signatureResponse.signature.slice(1), prehash, pubKey)
+      const valid = ed25519.verify(signatureResponse.signature.subarray(1), prehash, pubKey)
       expect(valid).toEqual(true)
     } finally {
       await sim.close()
     }
   })
 
-  test.each(models)('sign basic expert', async function (m) {
+  test.concurrent.each(models)('sign basic expert', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -228,14 +228,14 @@ describe('Standard', function () {
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
-      const valid = ed25519.verify(signatureResponse.signature.slice(1), prehash, pubKey)
+      const valid = ed25519.verify(signatureResponse.signature.subarray(1), prehash, pubKey)
       expect(valid).toEqual(true)
     } finally {
       await sim.close()
     }
   })
 
-  test.each(models)('set keys', async function (m) {
+  test.concurrent.each(models)('set keys', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -269,14 +269,14 @@ describe('Standard', function () {
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
-      const valid = ed25519.verify(signatureResponse.signature.slice(1), prehash, pubKey)
+      const valid = ed25519.verify(signatureResponse.signature.subarray(1), prehash, pubKey)
       expect(valid).toEqual(true)
     } finally {
       await sim.close()
     }
   })
 
-  test.each(models)('Utility batch', async function (m) {
+  test.concurrent.each(models)('Utility batch', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -308,14 +308,14 @@ describe('Standard', function () {
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
-      const valid = ed25519.verify(signatureResponse.signature.slice(1), prehash, pubKey)
+      const valid = ed25519.verify(signatureResponse.signature.subarray(1), prehash, pubKey)
       expect(valid).toEqual(true)
     } finally {
       await sim.close()
     }
   })
 
-  test.each(models)('Proxy proxy balances transfer', async function (m) {
+  test.concurrent.each(models)('Proxy proxy balances transfer', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -347,7 +347,7 @@ describe('Standard', function () {
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
-      const valid = ed25519.verify(signatureResponse.signature.slice(1), prehash, pubKey)
+      const valid = ed25519.verify(signatureResponse.signature.subarray(1), prehash, pubKey)
       expect(valid).toEqual(true)
     } finally {
       await sim.close()
