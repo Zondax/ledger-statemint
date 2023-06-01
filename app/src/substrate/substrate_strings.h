@@ -123,6 +123,12 @@ static const char* STR_ME_SET_ACCEPT_OWNERSHIP = "Set accept ownership";
 static const char* STR_ME_SET_COLLECTION_MAX_SUPPLY = "Set collection max supply";
 static const char* STR_ME_SET_PRICE = "Set price";
 static const char* STR_ME_BUY_ITEM = "Buy item";
+static const char* STR_ME_TRANSFER_ALLOW_DEATH = "Transfer allow death";
+static const char* STR_ME_SET_BALANCE_DEPRECATED = "Set balance deprecated";
+static const char* STR_ME_UPGRADE_ACCOUNTS = "Upgrade accounts";
+static const char* STR_ME_FORCE_SET_BALANCE = "Force set balance";
+static const char* STR_ME_FORCE_SUSPENSION = "Force suspension";
+static const char* STR_ME_SET_MIN_BALANCE = "Set min balance";
 
 // Items names
 static const char* STR_IT_remark = "Remark";
@@ -200,6 +206,8 @@ static const char* STR_IT_max_supply = "Max supply";
 static const char* STR_IT_price = "Price";
 static const char* STR_IT_whitelisted_buyer = "Whitelisted buyer";
 static const char* STR_IT_bid_price = "Bid price";
+static const char* STR_IT_old_reserved = "Old reserved";
+static const char* STR_IT_suspended = "Suspended";
 
 #ifdef __cplusplus
 }
