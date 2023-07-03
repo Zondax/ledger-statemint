@@ -21,7 +21,6 @@ extern "C" {
 
 #include "parser_common.h"
 #include "stdbool.h"
-#include "substrate_dispatch_V11.h"
 #include "substrate_dispatch_V13.h"
 #include <stddef.h>
 #include <stdint.h>
@@ -35,9 +34,6 @@ extern "C" {
                                                    \
         case 13:                                   \
             return PD_CALL_##CALL##_V13;           \
-                                                   \
-        case 11:                                   \
-            return PD_CALL_##CALL##_V11;           \
                                                    \
         default:                                   \
             return 0;                              \
