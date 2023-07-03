@@ -1,5 +1,5 @@
 /*******************************************************************************
-*  (c) 2019 - 2022 Zondax GmbH
+*  (c) 2019 Zondax GmbH
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -71,6 +71,7 @@ uint8_t *tx_get_buffer() {
 }
 
 const char *tx_parse() {
+
     uint8_t err = parser_parse(
             &ctx_parsed_tx,
             tx_get_buffer(),
@@ -109,7 +110,7 @@ zxerr_t tx_getItem(int8_t displayIdx,
 
     CHECK_ZXERR(tx_getNumItems(&numItems))
 
-    if (displayIdx < 0 || displayIdx > numItems) {
+    if (displayIdx < 0 || displayIdx >= numItems) {
         return zxerr_no_data;
     }
 
