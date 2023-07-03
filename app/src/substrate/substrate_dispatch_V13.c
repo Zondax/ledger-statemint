@@ -140,6 +140,247 @@ __Z_INLINE parser_error_t _readMethod_polkadotxcm_limited_teleport_assets_V13(
     CHECK_ERROR(_readWeightLimit(c, &m->weight_limit))
     return parser_ok;
 }
+__Z_INLINE parser_error_t _readMethod_foreignassets_create_V13(
+    parser_context_t* c, pd_foreignassets_create_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->admin))
+    CHECK_ERROR(_readBalance(c, &m->min_balance))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_force_create_V13(
+    parser_context_t* c, pd_foreignassets_force_create_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    CHECK_ERROR(_readbool(c, &m->is_sufficient))
+    CHECK_ERROR(_readCompactBalance(c, &m->min_balance))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_start_destroy_V13(
+    parser_context_t* c, pd_foreignassets_start_destroy_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_destroy_accounts_V13(
+    parser_context_t* c, pd_foreignassets_destroy_accounts_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_destroy_approvals_V13(
+    parser_context_t* c, pd_foreignassets_destroy_approvals_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_finish_destroy_V13(
+    parser_context_t* c, pd_foreignassets_finish_destroy_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_mint_V13(
+    parser_context_t* c, pd_foreignassets_mint_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->beneficiary))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_burn_V13(
+    parser_context_t* c, pd_foreignassets_burn_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_transfer_V13(
+    parser_context_t* c, pd_foreignassets_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->target))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_transfer_keep_alive_V13(
+    parser_context_t* c, pd_foreignassets_transfer_keep_alive_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->target))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_force_transfer_V13(
+    parser_context_t* c, pd_foreignassets_force_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->source))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->dest))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_freeze_V13(
+    parser_context_t* c, pd_foreignassets_freeze_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_thaw_V13(
+    parser_context_t* c, pd_foreignassets_thaw_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_freeze_asset_V13(
+    parser_context_t* c, pd_foreignassets_freeze_asset_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_thaw_asset_V13(
+    parser_context_t* c, pd_foreignassets_thaw_asset_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_transfer_ownership_V13(
+    parser_context_t* c, pd_foreignassets_transfer_ownership_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_set_team_V13(
+    parser_context_t* c, pd_foreignassets_set_team_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->issuer))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->admin))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->freezer))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_set_metadata_V13(
+    parser_context_t* c, pd_foreignassets_set_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readVecu8(c, &m->name))
+    CHECK_ERROR(_readVecu8(c, &m->symbol))
+    CHECK_ERROR(_readu8(c, &m->decimals))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_clear_metadata_V13(
+    parser_context_t* c, pd_foreignassets_clear_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_force_set_metadata_V13(
+    parser_context_t* c, pd_foreignassets_force_set_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readVecu8(c, &m->name))
+    CHECK_ERROR(_readVecu8(c, &m->symbol))
+    CHECK_ERROR(_readu8(c, &m->decimals))
+    CHECK_ERROR(_readbool(c, &m->is_frozen))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_force_clear_metadata_V13(
+    parser_context_t* c, pd_foreignassets_force_clear_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_force_asset_status_V13(
+    parser_context_t* c, pd_foreignassets_force_asset_status_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->issuer))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->admin))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->freezer))
+    CHECK_ERROR(_readCompactBalance(c, &m->min_balance))
+    CHECK_ERROR(_readbool(c, &m->is_sufficient))
+    CHECK_ERROR(_readbool(c, &m->is_frozen))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_approve_transfer_V13(
+    parser_context_t* c, pd_foreignassets_approve_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_cancel_approval_V13(
+    parser_context_t* c, pd_foreignassets_cancel_approval_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_force_cancel_approval_V13(
+    parser_context_t* c, pd_foreignassets_force_cancel_approval_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_transfer_approved_V13(
+    parser_context_t* c, pd_foreignassets_transfer_approved_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->destination))
+    CHECK_ERROR(_readCompactBalance(c, &m->amount))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_touch_V13(
+    parser_context_t* c, pd_foreignassets_touch_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_refund_V13(
+    parser_context_t* c, pd_foreignassets_refund_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readbool(c, &m->allow_burn))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_set_min_balance_V13(
+    parser_context_t* c, pd_foreignassets_set_min_balance_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readBalance(c, &m->min_balance))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_touch_other_V13(
+    parser_context_t* c, pd_foreignassets_touch_other_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_refund_other_V13(
+    parser_context_t* c, pd_foreignassets_refund_other_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+__Z_INLINE parser_error_t _readMethod_foreignassets_block_V13(
+    parser_context_t* c, pd_foreignassets_block_V13_t* m)
+{
+    CHECK_ERROR(_readAssetIdParameter(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
 #endif
 __Z_INLINE parser_error_t _readMethod_system_remark_V13(
     parser_context_t* c, pd_system_remark_V13_t* m)
@@ -712,6 +953,30 @@ __Z_INLINE parser_error_t _readMethod_assets_set_min_balance_V13(
     return parser_ok;
 }
 
+__Z_INLINE parser_error_t _readMethod_assets_touch_other_V13(
+    parser_context_t* c, pd_assets_touch_other_V13_t* m)
+{
+    CHECK_ERROR(_readCompactu32(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_assets_refund_other_V13(
+    parser_context_t* c, pd_assets_refund_other_V13_t* m)
+{
+    CHECK_ERROR(_readCompactu32(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_assets_block_V13(
+    parser_context_t* c, pd_assets_block_V13_t* m)
+{
+    CHECK_ERROR(_readCompactu32(c, &m->id))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->who))
+    return parser_ok;
+}
+
 __Z_INLINE parser_error_t _readMethod_uniques_create_V13(
     parser_context_t* c, pd_uniques_create_V13_t* m)
 {
@@ -938,6 +1203,334 @@ __Z_INLINE parser_error_t _readMethod_uniques_buy_item_V13(
     return parser_ok;
 }
 
+__Z_INLINE parser_error_t _readMethod_nfts_create_V13(
+    parser_context_t* c, pd_nfts_create_V13_t* m)
+{
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->admin))
+    CHECK_ERROR(_readCollectionConfigFor(c, &m->config))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_force_create_V13(
+    parser_context_t* c, pd_nfts_force_create_V13_t* m)
+{
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    CHECK_ERROR(_readCollectionConfigFor(c, &m->config))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_destroy_V13(
+    parser_context_t* c, pd_nfts_destroy_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readDestroyWitness(c, &m->witness))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_mint_V13(
+    parser_context_t* c, pd_nfts_mint_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->mint_to))
+    CHECK_ERROR(_readOptionMintWitnessItemId(c, &m->witness_data))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_force_mint_V13(
+    parser_context_t* c, pd_nfts_force_mint_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->mint_to))
+    CHECK_ERROR(_readItemConfig(c, &m->item_config))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_burn_V13(
+    parser_context_t* c, pd_nfts_burn_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_transfer_V13(
+    parser_context_t* c, pd_nfts_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->dest))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_redeposit_V13(
+    parser_context_t* c, pd_nfts_redeposit_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readVecItemId(c, &m->items))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_lock_item_transfer_V13(
+    parser_context_t* c, pd_nfts_lock_item_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_unlock_item_transfer_V13(
+    parser_context_t* c, pd_nfts_unlock_item_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_lock_collection_V13(
+    parser_context_t* c, pd_nfts_lock_collection_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readCollectionSettings(c, &m->lock_settings))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_transfer_ownership_V13(
+    parser_context_t* c, pd_nfts_transfer_ownership_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_team_V13(
+    parser_context_t* c, pd_nfts_set_team_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readOptionAccountIdLookupOfT(c, &m->issuer))
+    CHECK_ERROR(_readOptionAccountIdLookupOfT(c, &m->admin))
+    CHECK_ERROR(_readOptionAccountIdLookupOfT(c, &m->freezer))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_force_collection_owner_V13(
+    parser_context_t* c, pd_nfts_force_collection_owner_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->owner))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_force_collection_config_V13(
+    parser_context_t* c, pd_nfts_force_collection_config_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readCollectionConfigFor(c, &m->config))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_approve_transfer_V13(
+    parser_context_t* c, pd_nfts_approve_transfer_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    CHECK_ERROR(_readOptionu32(c, &m->maybe_deadline))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_cancel_approval_V13(
+    parser_context_t* c, pd_nfts_cancel_approval_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_clear_all_transfer_approvals_V13(
+    parser_context_t* c, pd_nfts_clear_all_transfer_approvals_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_lock_item_properties_V13(
+    parser_context_t* c, pd_nfts_lock_item_properties_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readbool(c, &m->lock_metadata))
+    CHECK_ERROR(_readbool(c, &m->lock_attributes))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_attribute_V13(
+    parser_context_t* c, pd_nfts_set_attribute_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readOptionItemId(c, &m->maybe_item))
+    CHECK_ERROR(_readAttributeNamespaceAccountId(c, &m->namespace_))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->key))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->value))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_force_set_attribute_V13(
+    parser_context_t* c, pd_nfts_force_set_attribute_V13_t* m)
+{
+    CHECK_ERROR(_readOptionAccountId(c, &m->set_as))
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readOptionItemId(c, &m->maybe_item))
+    CHECK_ERROR(_readAttributeNamespaceAccountId(c, &m->namespace_))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->key))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->value))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_clear_attribute_V13(
+    parser_context_t* c, pd_nfts_clear_attribute_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readOptionItemId(c, &m->maybe_item))
+    CHECK_ERROR(_readAttributeNamespaceAccountId(c, &m->namespace_))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->key))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_approve_item_attributes_V13(
+    parser_context_t* c, pd_nfts_approve_item_attributes_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_cancel_item_attributes_approval_V13(
+    parser_context_t* c, pd_nfts_cancel_item_attributes_approval_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readAccountIdLookupOfT(c, &m->delegate))
+    CHECK_ERROR(_readCancelAttributesApprovalWitness(c, &m->witness))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_metadata_V13(
+    parser_context_t* c, pd_nfts_set_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->data))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_clear_metadata_V13(
+    parser_context_t* c, pd_nfts_clear_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_collection_metadata_V13(
+    parser_context_t* c, pd_nfts_set_collection_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readBoundedVecu8(c, &m->data))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_clear_collection_metadata_V13(
+    parser_context_t* c, pd_nfts_clear_collection_metadata_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_accept_ownership_V13(
+    parser_context_t* c, pd_nfts_set_accept_ownership_V13_t* m)
+{
+    CHECK_ERROR(_readOptionCollectionId(c, &m->maybe_collection))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_collection_max_supply_V13(
+    parser_context_t* c, pd_nfts_set_collection_max_supply_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readu32(c, &m->max_supply))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_update_mint_settings_V13(
+    parser_context_t* c, pd_nfts_update_mint_settings_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readMintSettings(c, &m->mint_settings))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_set_price_V13(
+    parser_context_t* c, pd_nfts_set_price_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readOptionItemPrice(c, &m->price))
+    CHECK_ERROR(_readOptionAccountIdLookupOfT(c, &m->whitelisted_buyer))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_buy_item_V13(
+    parser_context_t* c, pd_nfts_buy_item_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->collection))
+    CHECK_ERROR(_readItemId(c, &m->item))
+    CHECK_ERROR(_readItemPrice(c, &m->bid_price))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_pay_tips_V13(
+    parser_context_t* c, pd_nfts_pay_tips_V13_t* m)
+{
+    CHECK_ERROR(_readVecItemTipOfMaxTips(c, &m->tips))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_create_swap_V13(
+    parser_context_t* c, pd_nfts_create_swap_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->offered_collection))
+    CHECK_ERROR(_readItemId(c, &m->offered_item))
+    CHECK_ERROR(_readCollectionId(c, &m->desired_collection))
+    CHECK_ERROR(_readOptionItemId(c, &m->maybe_desired_item))
+    CHECK_ERROR(_readOptionPriceWithDirectionItemPrice(c, &m->maybe_price))
+    CHECK_ERROR(_readBlockNumber(c, &m->duration))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_cancel_swap_V13(
+    parser_context_t* c, pd_nfts_cancel_swap_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->offered_collection))
+    CHECK_ERROR(_readItemId(c, &m->offered_item))
+    return parser_ok;
+}
+
+__Z_INLINE parser_error_t _readMethod_nfts_claim_swap_V13(
+    parser_context_t* c, pd_nfts_claim_swap_V13_t* m)
+{
+    CHECK_ERROR(_readCollectionId(c, &m->send_collection))
+    CHECK_ERROR(_readItemId(c, &m->send_item))
+    CHECK_ERROR(_readCollectionId(c, &m->receive_collection))
+    CHECK_ERROR(_readItemId(c, &m->receive_item))
+    CHECK_ERROR(_readOptionPriceWithDirectionItemPrice(c, &m->witness_price))
+    return parser_ok;
+}
+
 #endif
 
 parser_error_t _readMethod_V13(
@@ -994,6 +1587,102 @@ parser_error_t _readMethod_V13(
         break;
     case 7945: /* module 31 call 9 */
         CHECK_ERROR(_readMethod_polkadotxcm_limited_teleport_assets_V13(c, &method->basic.polkadotxcm_limited_teleport_assets_V13))
+        break;
+    case 13568: /* module 53 call 0 */
+        CHECK_ERROR(_readMethod_foreignassets_create_V13(c, &method->basic.foreignassets_create_V13))
+        break;
+    case 13569: /* module 53 call 1 */
+        CHECK_ERROR(_readMethod_foreignassets_force_create_V13(c, &method->basic.foreignassets_force_create_V13))
+        break;
+    case 13570: /* module 53 call 2 */
+        CHECK_ERROR(_readMethod_foreignassets_start_destroy_V13(c, &method->basic.foreignassets_start_destroy_V13))
+        break;
+    case 13571: /* module 53 call 3 */
+        CHECK_ERROR(_readMethod_foreignassets_destroy_accounts_V13(c, &method->basic.foreignassets_destroy_accounts_V13))
+        break;
+    case 13572: /* module 53 call 4 */
+        CHECK_ERROR(_readMethod_foreignassets_destroy_approvals_V13(c, &method->basic.foreignassets_destroy_approvals_V13))
+        break;
+    case 13573: /* module 53 call 5 */
+        CHECK_ERROR(_readMethod_foreignassets_finish_destroy_V13(c, &method->basic.foreignassets_finish_destroy_V13))
+        break;
+    case 13574: /* module 53 call 6 */
+        CHECK_ERROR(_readMethod_foreignassets_mint_V13(c, &method->basic.foreignassets_mint_V13))
+        break;
+    case 13575: /* module 53 call 7 */
+        CHECK_ERROR(_readMethod_foreignassets_burn_V13(c, &method->basic.foreignassets_burn_V13))
+        break;
+    case 13576: /* module 53 call 8 */
+        CHECK_ERROR(_readMethod_foreignassets_transfer_V13(c, &method->basic.foreignassets_transfer_V13))
+        break;
+    case 13577: /* module 53 call 9 */
+        CHECK_ERROR(_readMethod_foreignassets_transfer_keep_alive_V13(c, &method->basic.foreignassets_transfer_keep_alive_V13))
+        break;
+    case 13578: /* module 53 call 10 */
+        CHECK_ERROR(_readMethod_foreignassets_force_transfer_V13(c, &method->basic.foreignassets_force_transfer_V13))
+        break;
+    case 13579: /* module 53 call 11 */
+        CHECK_ERROR(_readMethod_foreignassets_freeze_V13(c, &method->basic.foreignassets_freeze_V13))
+        break;
+    case 13580: /* module 53 call 12 */
+        CHECK_ERROR(_readMethod_foreignassets_thaw_V13(c, &method->basic.foreignassets_thaw_V13))
+        break;
+    case 13581: /* module 53 call 13 */
+        CHECK_ERROR(_readMethod_foreignassets_freeze_asset_V13(c, &method->basic.foreignassets_freeze_asset_V13))
+        break;
+    case 13582: /* module 53 call 14 */
+        CHECK_ERROR(_readMethod_foreignassets_thaw_asset_V13(c, &method->basic.foreignassets_thaw_asset_V13))
+        break;
+    case 13583: /* module 53 call 15 */
+        CHECK_ERROR(_readMethod_foreignassets_transfer_ownership_V13(c, &method->basic.foreignassets_transfer_ownership_V13))
+        break;
+    case 13584: /* module 53 call 16 */
+        CHECK_ERROR(_readMethod_foreignassets_set_team_V13(c, &method->basic.foreignassets_set_team_V13))
+        break;
+    case 13585: /* module 53 call 17 */
+        CHECK_ERROR(_readMethod_foreignassets_set_metadata_V13(c, &method->basic.foreignassets_set_metadata_V13))
+        break;
+    case 13586: /* module 53 call 18 */
+        CHECK_ERROR(_readMethod_foreignassets_clear_metadata_V13(c, &method->basic.foreignassets_clear_metadata_V13))
+        break;
+    case 13587: /* module 53 call 19 */
+        CHECK_ERROR(_readMethod_foreignassets_force_set_metadata_V13(c, &method->basic.foreignassets_force_set_metadata_V13))
+        break;
+    case 13588: /* module 53 call 20 */
+        CHECK_ERROR(_readMethod_foreignassets_force_clear_metadata_V13(c, &method->basic.foreignassets_force_clear_metadata_V13))
+        break;
+    case 13589: /* module 53 call 21 */
+        CHECK_ERROR(_readMethod_foreignassets_force_asset_status_V13(c, &method->basic.foreignassets_force_asset_status_V13))
+        break;
+    case 13590: /* module 53 call 22 */
+        CHECK_ERROR(_readMethod_foreignassets_approve_transfer_V13(c, &method->basic.foreignassets_approve_transfer_V13))
+        break;
+    case 13591: /* module 53 call 23 */
+        CHECK_ERROR(_readMethod_foreignassets_cancel_approval_V13(c, &method->basic.foreignassets_cancel_approval_V13))
+        break;
+    case 13592: /* module 53 call 24 */
+        CHECK_ERROR(_readMethod_foreignassets_force_cancel_approval_V13(c, &method->basic.foreignassets_force_cancel_approval_V13))
+        break;
+    case 13593: /* module 53 call 25 */
+        CHECK_ERROR(_readMethod_foreignassets_transfer_approved_V13(c, &method->basic.foreignassets_transfer_approved_V13))
+        break;
+    case 13594: /* module 53 call 26 */
+        CHECK_ERROR(_readMethod_foreignassets_touch_V13(c, &method->basic.foreignassets_touch_V13))
+        break;
+    case 13595: /* module 53 call 27 */
+        CHECK_ERROR(_readMethod_foreignassets_refund_V13(c, &method->basic.foreignassets_refund_V13))
+        break;
+    case 13596: /* module 53 call 28 */
+        CHECK_ERROR(_readMethod_foreignassets_set_min_balance_V13(c, &method->basic.foreignassets_set_min_balance_V13))
+        break;
+    case 13597: /* module 53 call 29 */
+        CHECK_ERROR(_readMethod_foreignassets_touch_other_V13(c, &method->basic.foreignassets_touch_other_V13))
+        break;
+    case 13598: /* module 53 call 30 */
+        CHECK_ERROR(_readMethod_foreignassets_refund_other_V13(c, &method->basic.foreignassets_refund_other_V13))
+        break;
+    case 13599: /* module 53 call 31 */
+        CHECK_ERROR(_readMethod_foreignassets_block_V13(c, &method->basic.foreignassets_block_V13))
         break;
 #endif
     case 0: /* module 0 call 0 */
@@ -1203,6 +1892,15 @@ parser_error_t _readMethod_V13(
     case 12828: /* module 50 call 28 */
         CHECK_ERROR(_readMethod_assets_set_min_balance_V13(c, &method->basic.assets_set_min_balance_V13))
         break;
+    case 12829: /* module 50 call 29 */
+        CHECK_ERROR(_readMethod_assets_touch_other_V13(c, &method->basic.assets_touch_other_V13))
+        break;
+    case 12830: /* module 50 call 30 */
+        CHECK_ERROR(_readMethod_assets_refund_other_V13(c, &method->basic.assets_refund_other_V13))
+        break;
+    case 12831: /* module 50 call 31 */
+        CHECK_ERROR(_readMethod_assets_block_V13(c, &method->basic.assets_block_V13))
+        break;
     case 13056: /* module 51 call 0 */
         CHECK_ERROR(_readMethod_uniques_create_V13(c, &method->basic.uniques_create_V13))
         break;
@@ -1281,6 +1979,117 @@ parser_error_t _readMethod_V13(
     case 13081: /* module 51 call 25 */
         CHECK_ERROR(_readMethod_uniques_buy_item_V13(c, &method->basic.uniques_buy_item_V13))
         break;
+    case 13312: /* module 52 call 0 */
+        CHECK_ERROR(_readMethod_nfts_create_V13(c, &method->basic.nfts_create_V13))
+        break;
+    case 13313: /* module 52 call 1 */
+        CHECK_ERROR(_readMethod_nfts_force_create_V13(c, &method->basic.nfts_force_create_V13))
+        break;
+    case 13314: /* module 52 call 2 */
+        CHECK_ERROR(_readMethod_nfts_destroy_V13(c, &method->basic.nfts_destroy_V13))
+        break;
+    case 13315: /* module 52 call 3 */
+        CHECK_ERROR(_readMethod_nfts_mint_V13(c, &method->basic.nfts_mint_V13))
+        break;
+    case 13316: /* module 52 call 4 */
+        CHECK_ERROR(_readMethod_nfts_force_mint_V13(c, &method->basic.nfts_force_mint_V13))
+        break;
+    case 13317: /* module 52 call 5 */
+        CHECK_ERROR(_readMethod_nfts_burn_V13(c, &method->basic.nfts_burn_V13))
+        break;
+    case 13318: /* module 52 call 6 */
+        CHECK_ERROR(_readMethod_nfts_transfer_V13(c, &method->basic.nfts_transfer_V13))
+        break;
+    case 13319: /* module 52 call 7 */
+        CHECK_ERROR(_readMethod_nfts_redeposit_V13(c, &method->basic.nfts_redeposit_V13))
+        break;
+    case 13320: /* module 52 call 8 */
+        CHECK_ERROR(_readMethod_nfts_lock_item_transfer_V13(c, &method->basic.nfts_lock_item_transfer_V13))
+        break;
+    case 13321: /* module 52 call 9 */
+        CHECK_ERROR(_readMethod_nfts_unlock_item_transfer_V13(c, &method->basic.nfts_unlock_item_transfer_V13))
+        break;
+    case 13322: /* module 52 call 10 */
+        CHECK_ERROR(_readMethod_nfts_lock_collection_V13(c, &method->basic.nfts_lock_collection_V13))
+        break;
+    case 13323: /* module 52 call 11 */
+        CHECK_ERROR(_readMethod_nfts_transfer_ownership_V13(c, &method->basic.nfts_transfer_ownership_V13))
+        break;
+    case 13324: /* module 52 call 12 */
+        CHECK_ERROR(_readMethod_nfts_set_team_V13(c, &method->basic.nfts_set_team_V13))
+        break;
+    case 13325: /* module 52 call 13 */
+        CHECK_ERROR(_readMethod_nfts_force_collection_owner_V13(c, &method->basic.nfts_force_collection_owner_V13))
+        break;
+    case 13326: /* module 52 call 14 */
+        CHECK_ERROR(_readMethod_nfts_force_collection_config_V13(c, &method->basic.nfts_force_collection_config_V13))
+        break;
+    case 13327: /* module 52 call 15 */
+        CHECK_ERROR(_readMethod_nfts_approve_transfer_V13(c, &method->basic.nfts_approve_transfer_V13))
+        break;
+    case 13328: /* module 52 call 16 */
+        CHECK_ERROR(_readMethod_nfts_cancel_approval_V13(c, &method->basic.nfts_cancel_approval_V13))
+        break;
+    case 13329: /* module 52 call 17 */
+        CHECK_ERROR(_readMethod_nfts_clear_all_transfer_approvals_V13(c, &method->basic.nfts_clear_all_transfer_approvals_V13))
+        break;
+    case 13330: /* module 52 call 18 */
+        CHECK_ERROR(_readMethod_nfts_lock_item_properties_V13(c, &method->basic.nfts_lock_item_properties_V13))
+        break;
+    case 13331: /* module 52 call 19 */
+        CHECK_ERROR(_readMethod_nfts_set_attribute_V13(c, &method->basic.nfts_set_attribute_V13))
+        break;
+    case 13332: /* module 52 call 20 */
+        CHECK_ERROR(_readMethod_nfts_force_set_attribute_V13(c, &method->basic.nfts_force_set_attribute_V13))
+        break;
+    case 13333: /* module 52 call 21 */
+        CHECK_ERROR(_readMethod_nfts_clear_attribute_V13(c, &method->basic.nfts_clear_attribute_V13))
+        break;
+    case 13334: /* module 52 call 22 */
+        CHECK_ERROR(_readMethod_nfts_approve_item_attributes_V13(c, &method->basic.nfts_approve_item_attributes_V13))
+        break;
+    case 13335: /* module 52 call 23 */
+        CHECK_ERROR(_readMethod_nfts_cancel_item_attributes_approval_V13(c, &method->basic.nfts_cancel_item_attributes_approval_V13))
+        break;
+    case 13336: /* module 52 call 24 */
+        CHECK_ERROR(_readMethod_nfts_set_metadata_V13(c, &method->basic.nfts_set_metadata_V13))
+        break;
+    case 13337: /* module 52 call 25 */
+        CHECK_ERROR(_readMethod_nfts_clear_metadata_V13(c, &method->basic.nfts_clear_metadata_V13))
+        break;
+    case 13338: /* module 52 call 26 */
+        CHECK_ERROR(_readMethod_nfts_set_collection_metadata_V13(c, &method->basic.nfts_set_collection_metadata_V13))
+        break;
+    case 13339: /* module 52 call 27 */
+        CHECK_ERROR(_readMethod_nfts_clear_collection_metadata_V13(c, &method->basic.nfts_clear_collection_metadata_V13))
+        break;
+    case 13340: /* module 52 call 28 */
+        CHECK_ERROR(_readMethod_nfts_set_accept_ownership_V13(c, &method->basic.nfts_set_accept_ownership_V13))
+        break;
+    case 13341: /* module 52 call 29 */
+        CHECK_ERROR(_readMethod_nfts_set_collection_max_supply_V13(c, &method->basic.nfts_set_collection_max_supply_V13))
+        break;
+    case 13342: /* module 52 call 30 */
+        CHECK_ERROR(_readMethod_nfts_update_mint_settings_V13(c, &method->basic.nfts_update_mint_settings_V13))
+        break;
+    case 13343: /* module 52 call 31 */
+        CHECK_ERROR(_readMethod_nfts_set_price_V13(c, &method->basic.nfts_set_price_V13))
+        break;
+    case 13344: /* module 52 call 32 */
+        CHECK_ERROR(_readMethod_nfts_buy_item_V13(c, &method->basic.nfts_buy_item_V13))
+        break;
+    case 13345: /* module 52 call 33 */
+        CHECK_ERROR(_readMethod_nfts_pay_tips_V13(c, &method->basic.nfts_pay_tips_V13))
+        break;
+    case 13346: /* module 52 call 34 */
+        CHECK_ERROR(_readMethod_nfts_create_swap_V13(c, &method->basic.nfts_create_swap_V13))
+        break;
+    case 13347: /* module 52 call 35 */
+        CHECK_ERROR(_readMethod_nfts_cancel_swap_V13(c, &method->basic.nfts_cancel_swap_V13))
+        break;
+    case 13348: /* module 52 call 36 */
+        CHECK_ERROR(_readMethod_nfts_claim_swap_V13(c, &method->basic.nfts_claim_swap_V13))
+        break;
 #endif
     default:
         return parser_unexpected_callIndex;
@@ -1307,6 +2116,8 @@ const char* _getMethod_ModuleName_V13(uint8_t moduleIdx)
 #ifndef TARGET_NANOS
     case 31:
         return STR_MO_POLKADOTXCM;
+    case 53:
+        return STR_MO_FOREIGNASSETS;
 #endif
     case 0:
         return STR_MO_SYSTEM;
@@ -1326,6 +2137,8 @@ const char* _getMethod_ModuleName_V13(uint8_t moduleIdx)
         return STR_MO_ASSETS;
     case 51:
         return STR_MO_UNIQUES;
+    case 52:
+        return STR_MO_NFTS;
 #endif
     default:
         return NULL;
@@ -1379,6 +2192,70 @@ const char* _getMethod_Name_V13_ParserFull(uint16_t callPrivIdx)
         return STR_ME_LIMITED_RESERVE_TRANSFER_ASSETS;
     case 7945: /* module 31 call 9 */
         return STR_ME_LIMITED_TELEPORT_ASSETS;
+    case 13568: /* module 53 call 0 */
+        return STR_ME_CREATE;
+    case 13569: /* module 53 call 1 */
+        return STR_ME_FORCE_CREATE;
+    case 13570: /* module 53 call 2 */
+        return STR_ME_START_DESTROY;
+    case 13571: /* module 53 call 3 */
+        return STR_ME_DESTROY_ACCOUNTS;
+    case 13572: /* module 53 call 4 */
+        return STR_ME_DESTROY_APPROVALS;
+    case 13573: /* module 53 call 5 */
+        return STR_ME_FINISH_DESTROY;
+    case 13574: /* module 53 call 6 */
+        return STR_ME_MINT;
+    case 13575: /* module 53 call 7 */
+        return STR_ME_BURN;
+    case 13576: /* module 53 call 8 */
+        return STR_ME_TRANSFER;
+    case 13577: /* module 53 call 9 */
+        return STR_ME_TRANSFER_KEEP_ALIVE;
+    case 13578: /* module 53 call 10 */
+        return STR_ME_FORCE_TRANSFER;
+    case 13579: /* module 53 call 11 */
+        return STR_ME_FREEZE;
+    case 13580: /* module 53 call 12 */
+        return STR_ME_THAW;
+    case 13581: /* module 53 call 13 */
+        return STR_ME_FREEZE_ASSET;
+    case 13582: /* module 53 call 14 */
+        return STR_ME_THAW_ASSET;
+    case 13583: /* module 53 call 15 */
+        return STR_ME_TRANSFER_OWNERSHIP;
+    case 13584: /* module 53 call 16 */
+        return STR_ME_SET_TEAM;
+    case 13585: /* module 53 call 17 */
+        return STR_ME_SET_METADATA;
+    case 13586: /* module 53 call 18 */
+        return STR_ME_CLEAR_METADATA;
+    case 13587: /* module 53 call 19 */
+        return STR_ME_FORCE_SET_METADATA;
+    case 13588: /* module 53 call 20 */
+        return STR_ME_FORCE_CLEAR_METADATA;
+    case 13589: /* module 53 call 21 */
+        return STR_ME_FORCE_ASSET_STATUS;
+    case 13590: /* module 53 call 22 */
+        return STR_ME_APPROVE_TRANSFER;
+    case 13591: /* module 53 call 23 */
+        return STR_ME_CANCEL_APPROVAL;
+    case 13592: /* module 53 call 24 */
+        return STR_ME_FORCE_CANCEL_APPROVAL;
+    case 13593: /* module 53 call 25 */
+        return STR_ME_TRANSFER_APPROVED;
+    case 13594: /* module 53 call 26 */
+        return STR_ME_TOUCH;
+    case 13595: /* module 53 call 27 */
+        return STR_ME_REFUND;
+    case 13596: /* module 53 call 28 */
+        return STR_ME_SET_MIN_BALANCE;
+    case 13597: /* module 53 call 29 */
+        return STR_ME_TOUCH_OTHER;
+    case 13598: /* module 53 call 30 */
+        return STR_ME_REFUND_OTHER;
+    case 13599: /* module 53 call 31 */
+        return STR_ME_BLOCK;
 #endif
     case 0: /* module 0 call 0 */
         return STR_ME_REMARK;
@@ -1518,6 +2395,12 @@ const char* _getMethod_Name_V13_ParserFull(uint16_t callPrivIdx)
         return STR_ME_REFUND;
     case 12828: /* module 50 call 28 */
         return STR_ME_SET_MIN_BALANCE;
+    case 12829: /* module 50 call 29 */
+        return STR_ME_TOUCH_OTHER;
+    case 12830: /* module 50 call 30 */
+        return STR_ME_REFUND_OTHER;
+    case 12831: /* module 50 call 31 */
+        return STR_ME_BLOCK;
     case 13056: /* module 51 call 0 */
         return STR_ME_CREATE;
     case 13057: /* module 51 call 1 */
@@ -1570,6 +2453,80 @@ const char* _getMethod_Name_V13_ParserFull(uint16_t callPrivIdx)
         return STR_ME_SET_PRICE;
     case 13081: /* module 51 call 25 */
         return STR_ME_BUY_ITEM;
+    case 13312: /* module 52 call 0 */
+        return STR_ME_CREATE;
+    case 13313: /* module 52 call 1 */
+        return STR_ME_FORCE_CREATE;
+    case 13314: /* module 52 call 2 */
+        return STR_ME_DESTROY;
+    case 13315: /* module 52 call 3 */
+        return STR_ME_MINT;
+    case 13316: /* module 52 call 4 */
+        return STR_ME_FORCE_MINT;
+    case 13317: /* module 52 call 5 */
+        return STR_ME_BURN;
+    case 13318: /* module 52 call 6 */
+        return STR_ME_TRANSFER;
+    case 13319: /* module 52 call 7 */
+        return STR_ME_REDEPOSIT;
+    case 13320: /* module 52 call 8 */
+        return STR_ME_LOCK_ITEM_TRANSFER;
+    case 13321: /* module 52 call 9 */
+        return STR_ME_UNLOCK_ITEM_TRANSFER;
+    case 13322: /* module 52 call 10 */
+        return STR_ME_LOCK_COLLECTION;
+    case 13323: /* module 52 call 11 */
+        return STR_ME_TRANSFER_OWNERSHIP;
+    case 13324: /* module 52 call 12 */
+        return STR_ME_SET_TEAM;
+    case 13325: /* module 52 call 13 */
+        return STR_ME_FORCE_COLLECTION_OWNER;
+    case 13326: /* module 52 call 14 */
+        return STR_ME_FORCE_COLLECTION_CONFIG;
+    case 13327: /* module 52 call 15 */
+        return STR_ME_APPROVE_TRANSFER;
+    case 13328: /* module 52 call 16 */
+        return STR_ME_CANCEL_APPROVAL;
+    case 13329: /* module 52 call 17 */
+        return STR_ME_CLEAR_ALL_TRANSFER_APPROVALS;
+    case 13330: /* module 52 call 18 */
+        return STR_ME_LOCK_ITEM_PROPERTIES;
+    case 13331: /* module 52 call 19 */
+        return STR_ME_SET_ATTRIBUTE;
+    case 13332: /* module 52 call 20 */
+        return STR_ME_FORCE_SET_ATTRIBUTE;
+    case 13333: /* module 52 call 21 */
+        return STR_ME_CLEAR_ATTRIBUTE;
+    case 13334: /* module 52 call 22 */
+        return STR_ME_APPROVE_ITEM_ATTRIBUTES;
+    case 13335: /* module 52 call 23 */
+        return STR_ME_CANCEL_ITEM_ATTRIBUTES_APPROVAL;
+    case 13336: /* module 52 call 24 */
+        return STR_ME_SET_METADATA;
+    case 13337: /* module 52 call 25 */
+        return STR_ME_CLEAR_METADATA;
+    case 13338: /* module 52 call 26 */
+        return STR_ME_SET_COLLECTION_METADATA;
+    case 13339: /* module 52 call 27 */
+        return STR_ME_CLEAR_COLLECTION_METADATA;
+    case 13340: /* module 52 call 28 */
+        return STR_ME_SET_ACCEPT_OWNERSHIP;
+    case 13341: /* module 52 call 29 */
+        return STR_ME_SET_COLLECTION_MAX_SUPPLY;
+    case 13342: /* module 52 call 30 */
+        return STR_ME_UPDATE_MINT_SETTINGS;
+    case 13343: /* module 52 call 31 */
+        return STR_ME_SET_PRICE;
+    case 13344: /* module 52 call 32 */
+        return STR_ME_BUY_ITEM;
+    case 13345: /* module 52 call 33 */
+        return STR_ME_PAY_TIPS;
+    case 13346: /* module 52 call 34 */
+        return STR_ME_CREATE_SWAP;
+    case 13347: /* module 52 call 35 */
+        return STR_ME_CANCEL_SWAP;
+    case 13348: /* module 52 call 36 */
+        return STR_ME_CLAIM_SWAP;
 #endif
     default:
         return NULL;
@@ -1613,6 +2570,70 @@ uint8_t _getMethod_NumItems_V13(uint8_t moduleIdx, uint8_t callIdx)
         return 5;
     case 7945: /* module 31 call 9 */
         return 5;
+    case 13568: /* module 53 call 0 */
+        return 3;
+    case 13569: /* module 53 call 1 */
+        return 4;
+    case 13570: /* module 53 call 2 */
+        return 1;
+    case 13571: /* module 53 call 3 */
+        return 1;
+    case 13572: /* module 53 call 4 */
+        return 1;
+    case 13573: /* module 53 call 5 */
+        return 1;
+    case 13574: /* module 53 call 6 */
+        return 3;
+    case 13575: /* module 53 call 7 */
+        return 3;
+    case 13576: /* module 53 call 8 */
+        return 3;
+    case 13577: /* module 53 call 9 */
+        return 3;
+    case 13578: /* module 53 call 10 */
+        return 4;
+    case 13579: /* module 53 call 11 */
+        return 2;
+    case 13580: /* module 53 call 12 */
+        return 2;
+    case 13581: /* module 53 call 13 */
+        return 1;
+    case 13582: /* module 53 call 14 */
+        return 1;
+    case 13583: /* module 53 call 15 */
+        return 2;
+    case 13584: /* module 53 call 16 */
+        return 4;
+    case 13585: /* module 53 call 17 */
+        return 4;
+    case 13586: /* module 53 call 18 */
+        return 1;
+    case 13587: /* module 53 call 19 */
+        return 5;
+    case 13588: /* module 53 call 20 */
+        return 1;
+    case 13589: /* module 53 call 21 */
+        return 8;
+    case 13590: /* module 53 call 22 */
+        return 3;
+    case 13591: /* module 53 call 23 */
+        return 2;
+    case 13592: /* module 53 call 24 */
+        return 3;
+    case 13593: /* module 53 call 25 */
+        return 4;
+    case 13594: /* module 53 call 26 */
+        return 1;
+    case 13595: /* module 53 call 27 */
+        return 2;
+    case 13596: /* module 53 call 28 */
+        return 2;
+    case 13597: /* module 53 call 29 */
+        return 2;
+    case 13598: /* module 53 call 30 */
+        return 2;
+    case 13599: /* module 53 call 31 */
+        return 2;
 #endif
     case 0: /* module 0 call 0 */
         return 1;
@@ -1752,6 +2773,12 @@ uint8_t _getMethod_NumItems_V13(uint8_t moduleIdx, uint8_t callIdx)
         return 2;
     case 12828: /* module 50 call 28 */
         return 2;
+    case 12829: /* module 50 call 29 */
+        return 2;
+    case 12830: /* module 50 call 30 */
+        return 2;
+    case 12831: /* module 50 call 31 */
+        return 2;
     case 13056: /* module 51 call 0 */
         return 2;
     case 13057: /* module 51 call 1 */
@@ -1804,6 +2831,80 @@ uint8_t _getMethod_NumItems_V13(uint8_t moduleIdx, uint8_t callIdx)
         return 4;
     case 13081: /* module 51 call 25 */
         return 3;
+    case 13312: /* module 52 call 0 */
+        return 2;
+    case 13313: /* module 52 call 1 */
+        return 2;
+    case 13314: /* module 52 call 2 */
+        return 2;
+    case 13315: /* module 52 call 3 */
+        return 4;
+    case 13316: /* module 52 call 4 */
+        return 4;
+    case 13317: /* module 52 call 5 */
+        return 2;
+    case 13318: /* module 52 call 6 */
+        return 3;
+    case 13319: /* module 52 call 7 */
+        return 2;
+    case 13320: /* module 52 call 8 */
+        return 2;
+    case 13321: /* module 52 call 9 */
+        return 2;
+    case 13322: /* module 52 call 10 */
+        return 2;
+    case 13323: /* module 52 call 11 */
+        return 2;
+    case 13324: /* module 52 call 12 */
+        return 4;
+    case 13325: /* module 52 call 13 */
+        return 2;
+    case 13326: /* module 52 call 14 */
+        return 2;
+    case 13327: /* module 52 call 15 */
+        return 4;
+    case 13328: /* module 52 call 16 */
+        return 3;
+    case 13329: /* module 52 call 17 */
+        return 2;
+    case 13330: /* module 52 call 18 */
+        return 4;
+    case 13331: /* module 52 call 19 */
+        return 5;
+    case 13332: /* module 52 call 20 */
+        return 6;
+    case 13333: /* module 52 call 21 */
+        return 4;
+    case 13334: /* module 52 call 22 */
+        return 3;
+    case 13335: /* module 52 call 23 */
+        return 4;
+    case 13336: /* module 52 call 24 */
+        return 3;
+    case 13337: /* module 52 call 25 */
+        return 2;
+    case 13338: /* module 52 call 26 */
+        return 2;
+    case 13339: /* module 52 call 27 */
+        return 1;
+    case 13340: /* module 52 call 28 */
+        return 1;
+    case 13341: /* module 52 call 29 */
+        return 2;
+    case 13342: /* module 52 call 30 */
+        return 2;
+    case 13343: /* module 52 call 31 */
+        return 4;
+    case 13344: /* module 52 call 32 */
+        return 3;
+    case 13345: /* module 52 call 33 */
+        return 1;
+    case 13346: /* module 52 call 34 */
+        return 6;
+    case 13347: /* module 52 call 35 */
+        return 2;
+    case 13348: /* module 52 call 36 */
+        return 5;
 #endif
     default:
         return 0;
@@ -1954,6 +3055,328 @@ const char* _getMethod_ItemName_V13(uint8_t moduleIdx, uint8_t callIdx, uint8_t 
             return STR_IT_fee_asset_item;
         case 4:
             return STR_IT_weight_limit;
+        default:
+            return NULL;
+        }
+    case 13568: /* module 53 call 0 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_admin;
+        case 2:
+            return STR_IT_min_balance;
+        default:
+            return NULL;
+        }
+    case 13569: /* module 53 call 1 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_owner;
+        case 2:
+            return STR_IT_is_sufficient;
+        case 3:
+            return STR_IT_min_balance;
+        default:
+            return NULL;
+        }
+    case 13570: /* module 53 call 2 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13571: /* module 53 call 3 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13572: /* module 53 call 4 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13573: /* module 53 call 5 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13574: /* module 53 call 6 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_beneficiary;
+        case 2:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13575: /* module 53 call 7 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        case 2:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13576: /* module 53 call 8 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_target;
+        case 2:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13577: /* module 53 call 9 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_target;
+        case 2:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13578: /* module 53 call 10 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_source;
+        case 2:
+            return STR_IT_dest;
+        case 3:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13579: /* module 53 call 11 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
+    case 13580: /* module 53 call 12 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
+    case 13581: /* module 53 call 13 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13582: /* module 53 call 14 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13583: /* module 53 call 15 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_owner;
+        default:
+            return NULL;
+        }
+    case 13584: /* module 53 call 16 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_issuer;
+        case 2:
+            return STR_IT_admin;
+        case 3:
+            return STR_IT_freezer;
+        default:
+            return NULL;
+        }
+    case 13585: /* module 53 call 17 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_name;
+        case 2:
+            return STR_IT_symbol;
+        case 3:
+            return STR_IT_decimals;
+        default:
+            return NULL;
+        }
+    case 13586: /* module 53 call 18 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13587: /* module 53 call 19 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_name;
+        case 2:
+            return STR_IT_symbol;
+        case 3:
+            return STR_IT_decimals;
+        case 4:
+            return STR_IT_is_frozen;
+        default:
+            return NULL;
+        }
+    case 13588: /* module 53 call 20 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13589: /* module 53 call 21 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_owner;
+        case 2:
+            return STR_IT_issuer;
+        case 3:
+            return STR_IT_admin;
+        case 4:
+            return STR_IT_freezer;
+        case 5:
+            return STR_IT_min_balance;
+        case 6:
+            return STR_IT_is_sufficient;
+        case 7:
+            return STR_IT_is_frozen;
+        default:
+            return NULL;
+        }
+    case 13590: /* module 53 call 22 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_delegate;
+        case 2:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13591: /* module 53 call 23 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_delegate;
+        default:
+            return NULL;
+        }
+    case 13592: /* module 53 call 24 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_owner;
+        case 2:
+            return STR_IT_delegate;
+        default:
+            return NULL;
+        }
+    case 13593: /* module 53 call 25 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_owner;
+        case 2:
+            return STR_IT_destination;
+        case 3:
+            return STR_IT_amount;
+        default:
+            return NULL;
+        }
+    case 13594: /* module 53 call 26 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        default:
+            return NULL;
+        }
+    case 13595: /* module 53 call 27 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_allow_burn;
+        default:
+            return NULL;
+        }
+    case 13596: /* module 53 call 28 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_min_balance;
+        default:
+            return NULL;
+        }
+    case 13597: /* module 53 call 29 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
+    case 13598: /* module 53 call 30 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
+    case 13599: /* module 53 call 31 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
         default:
             return NULL;
         }
@@ -2597,6 +4020,33 @@ const char* _getMethod_ItemName_V13(uint8_t moduleIdx, uint8_t callIdx, uint8_t 
         default:
             return NULL;
         }
+    case 12829: /* module 50 call 29 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
+    case 12830: /* module 50 call 30 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
+    case 12831: /* module 50 call 31 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_id;
+        case 1:
+            return STR_IT_who;
+        default:
+            return NULL;
+        }
     case 13056: /* module 51 call 0 */
         switch (itemIdx) {
         case 0:
@@ -2867,6 +4317,403 @@ const char* _getMethod_ItemName_V13(uint8_t moduleIdx, uint8_t callIdx, uint8_t 
         default:
             return NULL;
         }
+    case 13312: /* module 52 call 0 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_admin;
+        case 1:
+            return STR_IT_config;
+        default:
+            return NULL;
+        }
+    case 13313: /* module 52 call 1 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_owner;
+        case 1:
+            return STR_IT_config;
+        default:
+            return NULL;
+        }
+    case 13314: /* module 52 call 2 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_witness;
+        default:
+            return NULL;
+        }
+    case 13315: /* module 52 call 3 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_mint_to;
+        case 3:
+            return STR_IT_witness_data;
+        default:
+            return NULL;
+        }
+    case 13316: /* module 52 call 4 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_mint_to;
+        case 3:
+            return STR_IT_item_config;
+        default:
+            return NULL;
+        }
+    case 13317: /* module 52 call 5 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        default:
+            return NULL;
+        }
+    case 13318: /* module 52 call 6 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_dest;
+        default:
+            return NULL;
+        }
+    case 13319: /* module 52 call 7 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_items;
+        default:
+            return NULL;
+        }
+    case 13320: /* module 52 call 8 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        default:
+            return NULL;
+        }
+    case 13321: /* module 52 call 9 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        default:
+            return NULL;
+        }
+    case 13322: /* module 52 call 10 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_lock_settings;
+        default:
+            return NULL;
+        }
+    case 13323: /* module 52 call 11 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_owner;
+        default:
+            return NULL;
+        }
+    case 13324: /* module 52 call 12 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_issuer;
+        case 2:
+            return STR_IT_admin;
+        case 3:
+            return STR_IT_freezer;
+        default:
+            return NULL;
+        }
+    case 13325: /* module 52 call 13 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_owner;
+        default:
+            return NULL;
+        }
+    case 13326: /* module 52 call 14 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_config;
+        default:
+            return NULL;
+        }
+    case 13327: /* module 52 call 15 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_delegate;
+        case 3:
+            return STR_IT_maybe_deadline;
+        default:
+            return NULL;
+        }
+    case 13328: /* module 52 call 16 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_delegate;
+        default:
+            return NULL;
+        }
+    case 13329: /* module 52 call 17 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        default:
+            return NULL;
+        }
+    case 13330: /* module 52 call 18 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_lock_metadata;
+        case 3:
+            return STR_IT_lock_attributes;
+        default:
+            return NULL;
+        }
+    case 13331: /* module 52 call 19 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_maybe_item;
+        case 2:
+            return STR_IT_namespace_;
+        case 3:
+            return STR_IT_key;
+        case 4:
+            return STR_IT_value;
+        default:
+            return NULL;
+        }
+    case 13332: /* module 52 call 20 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_set_as;
+        case 1:
+            return STR_IT_collection;
+        case 2:
+            return STR_IT_maybe_item;
+        case 3:
+            return STR_IT_namespace_;
+        case 4:
+            return STR_IT_key;
+        case 5:
+            return STR_IT_value;
+        default:
+            return NULL;
+        }
+    case 13333: /* module 52 call 21 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_maybe_item;
+        case 2:
+            return STR_IT_namespace_;
+        case 3:
+            return STR_IT_key;
+        default:
+            return NULL;
+        }
+    case 13334: /* module 52 call 22 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_delegate;
+        default:
+            return NULL;
+        }
+    case 13335: /* module 52 call 23 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_delegate;
+        case 3:
+            return STR_IT_witness;
+        default:
+            return NULL;
+        }
+    case 13336: /* module 52 call 24 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_data;
+        default:
+            return NULL;
+        }
+    case 13337: /* module 52 call 25 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        default:
+            return NULL;
+        }
+    case 13338: /* module 52 call 26 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_data;
+        default:
+            return NULL;
+        }
+    case 13339: /* module 52 call 27 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        default:
+            return NULL;
+        }
+    case 13340: /* module 52 call 28 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_maybe_collection;
+        default:
+            return NULL;
+        }
+    case 13341: /* module 52 call 29 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_max_supply;
+        default:
+            return NULL;
+        }
+    case 13342: /* module 52 call 30 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_mint_settings;
+        default:
+            return NULL;
+        }
+    case 13343: /* module 52 call 31 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_price;
+        case 3:
+            return STR_IT_whitelisted_buyer;
+        default:
+            return NULL;
+        }
+    case 13344: /* module 52 call 32 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_collection;
+        case 1:
+            return STR_IT_item;
+        case 2:
+            return STR_IT_bid_price;
+        default:
+            return NULL;
+        }
+    case 13345: /* module 52 call 33 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_tips;
+        default:
+            return NULL;
+        }
+    case 13346: /* module 52 call 34 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_offered_collection;
+        case 1:
+            return STR_IT_offered_item;
+        case 2:
+            return STR_IT_desired_collection;
+        case 3:
+            return STR_IT_maybe_desired_item;
+        case 4:
+            return STR_IT_maybe_price;
+        case 5:
+            return STR_IT_duration;
+        default:
+            return NULL;
+        }
+    case 13347: /* module 52 call 35 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_offered_collection;
+        case 1:
+            return STR_IT_offered_item;
+        default:
+            return NULL;
+        }
+    case 13348: /* module 52 call 36 */
+        switch (itemIdx) {
+        case 0:
+            return STR_IT_send_collection;
+        case 1:
+            return STR_IT_send_item;
+        case 2:
+            return STR_IT_receive_collection;
+        case 3:
+            return STR_IT_receive_item;
+        case 4:
+            return STR_IT_witness_price;
+        default:
+            return NULL;
+        }
 #endif
     default:
         return NULL;
@@ -3121,6 +4968,571 @@ parser_error_t _getMethod_ItemValue_V13(
         case 4: /* polkadotxcm_limited_teleport_assets_V13 - weight_limit */;
             return _toStringWeightLimit(
                 &m->basic.polkadotxcm_limited_teleport_assets_V13.weight_limit,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13568: /* module 53 call 0 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_create_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_create_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_create_V13 - admin */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_create_V13.admin,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_create_V13 - min_balance */;
+            return _toStringBalance(
+                &m->basic.foreignassets_create_V13.min_balance,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13569: /* module 53 call 1 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_force_create_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_force_create_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_force_create_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_create_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_force_create_V13 - is_sufficient */;
+            return _toStringbool(
+                &m->basic.foreignassets_force_create_V13.is_sufficient,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_force_create_V13 - min_balance */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_force_create_V13.min_balance,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13570: /* module 53 call 2 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_start_destroy_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_start_destroy_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13571: /* module 53 call 3 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_destroy_accounts_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_destroy_accounts_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13572: /* module 53 call 4 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_destroy_approvals_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_destroy_approvals_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13573: /* module 53 call 5 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_finish_destroy_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_finish_destroy_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13574: /* module 53 call 6 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_mint_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_mint_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_mint_V13 - beneficiary */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_mint_V13.beneficiary,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_mint_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_mint_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13575: /* module 53 call 7 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_burn_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_burn_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_burn_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_burn_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_burn_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_burn_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13576: /* module 53 call 8 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_transfer_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_transfer_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_transfer_V13 - target */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_transfer_V13.target,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_transfer_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_transfer_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13577: /* module 53 call 9 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_transfer_keep_alive_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_transfer_keep_alive_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_transfer_keep_alive_V13 - target */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_transfer_keep_alive_V13.target,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_transfer_keep_alive_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_transfer_keep_alive_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13578: /* module 53 call 10 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_force_transfer_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_force_transfer_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_force_transfer_V13 - source */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_transfer_V13.source,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_force_transfer_V13 - dest */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_transfer_V13.dest,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_force_transfer_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_force_transfer_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13579: /* module 53 call 11 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_freeze_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_freeze_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_freeze_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_freeze_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13580: /* module 53 call 12 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_thaw_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_thaw_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_thaw_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_thaw_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13581: /* module 53 call 13 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_freeze_asset_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_freeze_asset_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13582: /* module 53 call 14 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_thaw_asset_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_thaw_asset_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13583: /* module 53 call 15 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_transfer_ownership_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_transfer_ownership_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_transfer_ownership_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_transfer_ownership_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13584: /* module 53 call 16 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_set_team_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_set_team_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_set_team_V13 - issuer */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_set_team_V13.issuer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_set_team_V13 - admin */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_set_team_V13.admin,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_set_team_V13 - freezer */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_set_team_V13.freezer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13585: /* module 53 call 17 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_set_metadata_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_set_metadata_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_set_metadata_V13 - name */;
+            return _toStringVecu8(
+                &m->basic.foreignassets_set_metadata_V13.name,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_set_metadata_V13 - symbol */;
+            return _toStringVecu8(
+                &m->basic.foreignassets_set_metadata_V13.symbol,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_set_metadata_V13 - decimals */;
+            return _toStringu8(
+                &m->basic.foreignassets_set_metadata_V13.decimals,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13586: /* module 53 call 18 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_clear_metadata_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_clear_metadata_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13587: /* module 53 call 19 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_force_set_metadata_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_force_set_metadata_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_force_set_metadata_V13 - name */;
+            return _toStringVecu8(
+                &m->basic.foreignassets_force_set_metadata_V13.name,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_force_set_metadata_V13 - symbol */;
+            return _toStringVecu8(
+                &m->basic.foreignassets_force_set_metadata_V13.symbol,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_force_set_metadata_V13 - decimals */;
+            return _toStringu8(
+                &m->basic.foreignassets_force_set_metadata_V13.decimals,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 4: /* foreignassets_force_set_metadata_V13 - is_frozen */;
+            return _toStringbool(
+                &m->basic.foreignassets_force_set_metadata_V13.is_frozen,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13588: /* module 53 call 20 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_force_clear_metadata_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_force_clear_metadata_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13589: /* module 53 call 21 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_force_asset_status_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_force_asset_status_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_force_asset_status_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_asset_status_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_force_asset_status_V13 - issuer */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_asset_status_V13.issuer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_force_asset_status_V13 - admin */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_asset_status_V13.admin,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 4: /* foreignassets_force_asset_status_V13 - freezer */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_asset_status_V13.freezer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 5: /* foreignassets_force_asset_status_V13 - min_balance */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_force_asset_status_V13.min_balance,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 6: /* foreignassets_force_asset_status_V13 - is_sufficient */;
+            return _toStringbool(
+                &m->basic.foreignassets_force_asset_status_V13.is_sufficient,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 7: /* foreignassets_force_asset_status_V13 - is_frozen */;
+            return _toStringbool(
+                &m->basic.foreignassets_force_asset_status_V13.is_frozen,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13590: /* module 53 call 22 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_approve_transfer_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_approve_transfer_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_approve_transfer_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_approve_transfer_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_approve_transfer_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_approve_transfer_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13591: /* module 53 call 23 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_cancel_approval_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_cancel_approval_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_cancel_approval_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_cancel_approval_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13592: /* module 53 call 24 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_force_cancel_approval_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_force_cancel_approval_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_force_cancel_approval_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_cancel_approval_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_force_cancel_approval_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_force_cancel_approval_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13593: /* module 53 call 25 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_transfer_approved_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_transfer_approved_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_transfer_approved_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_transfer_approved_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* foreignassets_transfer_approved_V13 - destination */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_transfer_approved_V13.destination,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* foreignassets_transfer_approved_V13 - amount */;
+            return _toStringCompactBalance(
+                &m->basic.foreignassets_transfer_approved_V13.amount,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13594: /* module 53 call 26 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_touch_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_touch_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13595: /* module 53 call 27 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_refund_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_refund_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_refund_V13 - allow_burn */;
+            return _toStringbool(
+                &m->basic.foreignassets_refund_V13.allow_burn,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13596: /* module 53 call 28 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_set_min_balance_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_set_min_balance_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_set_min_balance_V13 - min_balance */;
+            return _toStringBalance(
+                &m->basic.foreignassets_set_min_balance_V13.min_balance,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13597: /* module 53 call 29 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_touch_other_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_touch_other_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_touch_other_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_touch_other_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13598: /* module 53 call 30 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_refund_other_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_refund_other_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_refund_other_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_refund_other_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13599: /* module 53 call 31 */
+        switch (itemIdx) {
+        case 0: /* foreignassets_block_V13 - id */;
+            return _toStringAssetIdParameter(
+                &m->basic.foreignassets_block_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* foreignassets_block_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.foreignassets_block_V13.who,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -4207,6 +6619,51 @@ parser_error_t _getMethod_ItemValue_V13(
         default:
             return parser_no_data;
         }
+    case 12829: /* module 50 call 29 */
+        switch (itemIdx) {
+        case 0: /* assets_touch_other_V13 - id */;
+            return _toStringCompactu32(
+                &m->basic.assets_touch_other_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* assets_touch_other_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.assets_touch_other_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 12830: /* module 50 call 30 */
+        switch (itemIdx) {
+        case 0: /* assets_refund_other_V13 - id */;
+            return _toStringCompactu32(
+                &m->basic.assets_refund_other_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* assets_refund_other_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.assets_refund_other_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 12831: /* module 50 call 31 */
+        switch (itemIdx) {
+        case 0: /* assets_block_V13 - id */;
+            return _toStringCompactu32(
+                &m->basic.assets_block_V13.id,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* assets_block_V13 - who */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.assets_block_V13.who,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
     case 13056: /* module 51 call 0 */
         switch (itemIdx) {
         case 0: /* uniques_create_V13 - collection */;
@@ -4687,6 +7144,721 @@ parser_error_t _getMethod_ItemValue_V13(
         default:
             return parser_no_data;
         }
+    case 13312: /* module 52 call 0 */
+        switch (itemIdx) {
+        case 0: /* nfts_create_V13 - admin */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_create_V13.admin,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_create_V13 - config */;
+            return _toStringCollectionConfigFor(
+                &m->basic.nfts_create_V13.config,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13313: /* module 52 call 1 */
+        switch (itemIdx) {
+        case 0: /* nfts_force_create_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_force_create_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_force_create_V13 - config */;
+            return _toStringCollectionConfigFor(
+                &m->basic.nfts_force_create_V13.config,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13314: /* module 52 call 2 */
+        switch (itemIdx) {
+        case 0: /* nfts_destroy_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_destroy_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_destroy_V13 - witness */;
+            return _toStringDestroyWitness(
+                &m->basic.nfts_destroy_V13.witness,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13315: /* module 52 call 3 */
+        switch (itemIdx) {
+        case 0: /* nfts_mint_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_mint_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_mint_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_mint_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_mint_V13 - mint_to */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_mint_V13.mint_to,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_mint_V13 - witness_data */;
+            return _toStringOptionMintWitnessItemId(
+                &m->basic.nfts_mint_V13.witness_data,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13316: /* module 52 call 4 */
+        switch (itemIdx) {
+        case 0: /* nfts_force_mint_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_force_mint_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_force_mint_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_force_mint_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_force_mint_V13 - mint_to */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_force_mint_V13.mint_to,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_force_mint_V13 - item_config */;
+            return _toStringItemConfig(
+                &m->basic.nfts_force_mint_V13.item_config,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13317: /* module 52 call 5 */
+        switch (itemIdx) {
+        case 0: /* nfts_burn_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_burn_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_burn_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_burn_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13318: /* module 52 call 6 */
+        switch (itemIdx) {
+        case 0: /* nfts_transfer_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_transfer_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_transfer_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_transfer_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_transfer_V13 - dest */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_transfer_V13.dest,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13319: /* module 52 call 7 */
+        switch (itemIdx) {
+        case 0: /* nfts_redeposit_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_redeposit_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_redeposit_V13 - items */;
+            return _toStringVecItemId(
+                &m->basic.nfts_redeposit_V13.items,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13320: /* module 52 call 8 */
+        switch (itemIdx) {
+        case 0: /* nfts_lock_item_transfer_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_lock_item_transfer_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_lock_item_transfer_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_lock_item_transfer_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13321: /* module 52 call 9 */
+        switch (itemIdx) {
+        case 0: /* nfts_unlock_item_transfer_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_unlock_item_transfer_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_unlock_item_transfer_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_unlock_item_transfer_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13322: /* module 52 call 10 */
+        switch (itemIdx) {
+        case 0: /* nfts_lock_collection_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_lock_collection_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_lock_collection_V13 - lock_settings */;
+            return _toStringCollectionSettings(
+                &m->basic.nfts_lock_collection_V13.lock_settings,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13323: /* module 52 call 11 */
+        switch (itemIdx) {
+        case 0: /* nfts_transfer_ownership_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_transfer_ownership_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_transfer_ownership_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_transfer_ownership_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13324: /* module 52 call 12 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_team_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_set_team_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_set_team_V13 - issuer */;
+            return _toStringOptionAccountIdLookupOfT(
+                &m->basic.nfts_set_team_V13.issuer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_set_team_V13 - admin */;
+            return _toStringOptionAccountIdLookupOfT(
+                &m->basic.nfts_set_team_V13.admin,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_set_team_V13 - freezer */;
+            return _toStringOptionAccountIdLookupOfT(
+                &m->basic.nfts_set_team_V13.freezer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13325: /* module 52 call 13 */
+        switch (itemIdx) {
+        case 0: /* nfts_force_collection_owner_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_force_collection_owner_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_force_collection_owner_V13 - owner */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_force_collection_owner_V13.owner,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13326: /* module 52 call 14 */
+        switch (itemIdx) {
+        case 0: /* nfts_force_collection_config_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_force_collection_config_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_force_collection_config_V13 - config */;
+            return _toStringCollectionConfigFor(
+                &m->basic.nfts_force_collection_config_V13.config,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13327: /* module 52 call 15 */
+        switch (itemIdx) {
+        case 0: /* nfts_approve_transfer_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_approve_transfer_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_approve_transfer_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_approve_transfer_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_approve_transfer_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_approve_transfer_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_approve_transfer_V13 - maybe_deadline */;
+            return _toStringOptionu32(
+                &m->basic.nfts_approve_transfer_V13.maybe_deadline,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13328: /* module 52 call 16 */
+        switch (itemIdx) {
+        case 0: /* nfts_cancel_approval_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_cancel_approval_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_cancel_approval_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_cancel_approval_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_cancel_approval_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_cancel_approval_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13329: /* module 52 call 17 */
+        switch (itemIdx) {
+        case 0: /* nfts_clear_all_transfer_approvals_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_clear_all_transfer_approvals_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_clear_all_transfer_approvals_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_clear_all_transfer_approvals_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13330: /* module 52 call 18 */
+        switch (itemIdx) {
+        case 0: /* nfts_lock_item_properties_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_lock_item_properties_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_lock_item_properties_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_lock_item_properties_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_lock_item_properties_V13 - lock_metadata */;
+            return _toStringbool(
+                &m->basic.nfts_lock_item_properties_V13.lock_metadata,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_lock_item_properties_V13 - lock_attributes */;
+            return _toStringbool(
+                &m->basic.nfts_lock_item_properties_V13.lock_attributes,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13331: /* module 52 call 19 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_attribute_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_set_attribute_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_set_attribute_V13 - maybe_item */;
+            return _toStringOptionItemId(
+                &m->basic.nfts_set_attribute_V13.maybe_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_set_attribute_V13 - namespace_ */;
+            return _toStringAttributeNamespaceAccountId(
+                &m->basic.nfts_set_attribute_V13.namespace_,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_set_attribute_V13 - key */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_set_attribute_V13.key,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 4: /* nfts_set_attribute_V13 - value */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_set_attribute_V13.value,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13332: /* module 52 call 20 */
+        switch (itemIdx) {
+        case 0: /* nfts_force_set_attribute_V13 - set_as */;
+            return _toStringOptionAccountId(
+                &m->basic.nfts_force_set_attribute_V13.set_as,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_force_set_attribute_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_force_set_attribute_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_force_set_attribute_V13 - maybe_item */;
+            return _toStringOptionItemId(
+                &m->basic.nfts_force_set_attribute_V13.maybe_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_force_set_attribute_V13 - namespace_ */;
+            return _toStringAttributeNamespaceAccountId(
+                &m->basic.nfts_force_set_attribute_V13.namespace_,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 4: /* nfts_force_set_attribute_V13 - key */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_force_set_attribute_V13.key,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 5: /* nfts_force_set_attribute_V13 - value */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_force_set_attribute_V13.value,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13333: /* module 52 call 21 */
+        switch (itemIdx) {
+        case 0: /* nfts_clear_attribute_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_clear_attribute_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_clear_attribute_V13 - maybe_item */;
+            return _toStringOptionItemId(
+                &m->basic.nfts_clear_attribute_V13.maybe_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_clear_attribute_V13 - namespace_ */;
+            return _toStringAttributeNamespaceAccountId(
+                &m->basic.nfts_clear_attribute_V13.namespace_,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_clear_attribute_V13 - key */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_clear_attribute_V13.key,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13334: /* module 52 call 22 */
+        switch (itemIdx) {
+        case 0: /* nfts_approve_item_attributes_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_approve_item_attributes_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_approve_item_attributes_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_approve_item_attributes_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_approve_item_attributes_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_approve_item_attributes_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13335: /* module 52 call 23 */
+        switch (itemIdx) {
+        case 0: /* nfts_cancel_item_attributes_approval_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_cancel_item_attributes_approval_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_cancel_item_attributes_approval_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_cancel_item_attributes_approval_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_cancel_item_attributes_approval_V13 - delegate */;
+            return _toStringAccountIdLookupOfT(
+                &m->basic.nfts_cancel_item_attributes_approval_V13.delegate,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_cancel_item_attributes_approval_V13 - witness */;
+            return _toStringCancelAttributesApprovalWitness(
+                &m->basic.nfts_cancel_item_attributes_approval_V13.witness,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13336: /* module 52 call 24 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_metadata_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_set_metadata_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_set_metadata_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_set_metadata_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_set_metadata_V13 - data */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_set_metadata_V13.data,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13337: /* module 52 call 25 */
+        switch (itemIdx) {
+        case 0: /* nfts_clear_metadata_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_clear_metadata_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_clear_metadata_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_clear_metadata_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13338: /* module 52 call 26 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_collection_metadata_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_set_collection_metadata_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_set_collection_metadata_V13 - data */;
+            return _toStringBoundedVecu8(
+                &m->basic.nfts_set_collection_metadata_V13.data,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13339: /* module 52 call 27 */
+        switch (itemIdx) {
+        case 0: /* nfts_clear_collection_metadata_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_clear_collection_metadata_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13340: /* module 52 call 28 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_accept_ownership_V13 - maybe_collection */;
+            return _toStringOptionCollectionId(
+                &m->basic.nfts_set_accept_ownership_V13.maybe_collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13341: /* module 52 call 29 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_collection_max_supply_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_set_collection_max_supply_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_set_collection_max_supply_V13 - max_supply */;
+            return _toStringu32(
+                &m->basic.nfts_set_collection_max_supply_V13.max_supply,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13342: /* module 52 call 30 */
+        switch (itemIdx) {
+        case 0: /* nfts_update_mint_settings_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_update_mint_settings_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_update_mint_settings_V13 - mint_settings */;
+            return _toStringMintSettings(
+                &m->basic.nfts_update_mint_settings_V13.mint_settings,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13343: /* module 52 call 31 */
+        switch (itemIdx) {
+        case 0: /* nfts_set_price_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_set_price_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_set_price_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_set_price_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_set_price_V13 - price */;
+            return _toStringOptionItemPrice(
+                &m->basic.nfts_set_price_V13.price,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_set_price_V13 - whitelisted_buyer */;
+            return _toStringOptionAccountIdLookupOfT(
+                &m->basic.nfts_set_price_V13.whitelisted_buyer,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13344: /* module 52 call 32 */
+        switch (itemIdx) {
+        case 0: /* nfts_buy_item_V13 - collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_buy_item_V13.collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_buy_item_V13 - item */;
+            return _toStringItemId(
+                &m->basic.nfts_buy_item_V13.item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_buy_item_V13 - bid_price */;
+            return _toStringItemPrice(
+                &m->basic.nfts_buy_item_V13.bid_price,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13345: /* module 52 call 33 */
+        switch (itemIdx) {
+        case 0: /* nfts_pay_tips_V13 - tips */;
+            return _toStringVecItemTipOfMaxTips(
+                &m->basic.nfts_pay_tips_V13.tips,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13346: /* module 52 call 34 */
+        switch (itemIdx) {
+        case 0: /* nfts_create_swap_V13 - offered_collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_create_swap_V13.offered_collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_create_swap_V13 - offered_item */;
+            return _toStringItemId(
+                &m->basic.nfts_create_swap_V13.offered_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_create_swap_V13 - desired_collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_create_swap_V13.desired_collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_create_swap_V13 - maybe_desired_item */;
+            return _toStringOptionItemId(
+                &m->basic.nfts_create_swap_V13.maybe_desired_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 4: /* nfts_create_swap_V13 - maybe_price */;
+            return _toStringOptionPriceWithDirectionItemPrice(
+                &m->basic.nfts_create_swap_V13.maybe_price,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 5: /* nfts_create_swap_V13 - duration */;
+            return _toStringBlockNumber(
+                &m->basic.nfts_create_swap_V13.duration,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13347: /* module 52 call 35 */
+        switch (itemIdx) {
+        case 0: /* nfts_cancel_swap_V13 - offered_collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_cancel_swap_V13.offered_collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_cancel_swap_V13 - offered_item */;
+            return _toStringItemId(
+                &m->basic.nfts_cancel_swap_V13.offered_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
+    case 13348: /* module 52 call 36 */
+        switch (itemIdx) {
+        case 0: /* nfts_claim_swap_V13 - send_collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_claim_swap_V13.send_collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 1: /* nfts_claim_swap_V13 - send_item */;
+            return _toStringItemId(
+                &m->basic.nfts_claim_swap_V13.send_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 2: /* nfts_claim_swap_V13 - receive_collection */;
+            return _toStringCollectionId(
+                &m->basic.nfts_claim_swap_V13.receive_collection,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 3: /* nfts_claim_swap_V13 - receive_item */;
+            return _toStringItemId(
+                &m->basic.nfts_claim_swap_V13.receive_item,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        case 4: /* nfts_claim_swap_V13 - witness_price */;
+            return _toStringOptionPriceWithDirectionItemPrice(
+                &m->basic.nfts_claim_swap_V13.witness_price,
+                outValue, outValueLen,
+                pageIdx, pageCount);
+        default:
+            return parser_no_data;
+        }
 #endif
     default:
         return parser_ok;
@@ -4753,6 +7925,9 @@ bool _getMethod_IsNestingSupported_V13(uint8_t moduleIdx, uint8_t callIdx)
     case 12826: // Assets:Touch
     case 12827: // Assets:Refund
     case 12828: // Assets:Set min balance
+    case 12829: // Assets:Touch other
+    case 12830: // Assets:Refund other
+    case 12831: // Assets:Block
     case 13056: // Uniques:Create
     case 13057: // Uniques:Force create
     case 13058: // Uniques:Destroy
@@ -4779,6 +7954,75 @@ bool _getMethod_IsNestingSupported_V13(uint8_t moduleIdx, uint8_t callIdx)
     case 13079: // Uniques:Set collection max supply
     case 13080: // Uniques:Set price
     case 13081: // Uniques:Buy item
+    case 13312: // Nfts:Create
+    case 13313: // Nfts:Force create
+    case 13314: // Nfts:Destroy
+    case 13315: // Nfts:Mint
+    case 13316: // Nfts:Force mint
+    case 13317: // Nfts:Burn
+    case 13318: // Nfts:Transfer
+    case 13319: // Nfts:Redeposit
+    case 13320: // Nfts:Lock item transfer
+    case 13321: // Nfts:Unlock item transfer
+    case 13322: // Nfts:Lock collection
+    case 13323: // Nfts:Transfer ownership
+    case 13324: // Nfts:Set team
+    case 13325: // Nfts:Force collection owner
+    case 13326: // Nfts:Force collection config
+    case 13327: // Nfts:Approve transfer
+    case 13328: // Nfts:Cancel approval
+    case 13329: // Nfts:Clear all transfer approvals
+    case 13330: // Nfts:Lock item properties
+    case 13331: // Nfts:Set attribute
+    case 13332: // Nfts:Force set attribute
+    case 13333: // Nfts:Clear attribute
+    case 13334: // Nfts:Approve item attributes
+    case 13335: // Nfts:Cancel item attributes approval
+    case 13336: // Nfts:Set metadata
+    case 13337: // Nfts:Clear metadata
+    case 13338: // Nfts:Set collection metadata
+    case 13339: // Nfts:Clear collection metadata
+    case 13340: // Nfts:Set accept ownership
+    case 13341: // Nfts:Set collection max supply
+    case 13342: // Nfts:Update mint settings
+    case 13343: // Nfts:Set price
+    case 13344: // Nfts:Buy item
+    case 13345: // Nfts:Pay tips
+    case 13346: // Nfts:Create swap
+    case 13347: // Nfts:Cancel swap
+    case 13348: // Nfts:Claim swap
+    case 13568: // ForeignAssets:Create
+    case 13569: // ForeignAssets:Force create
+    case 13570: // ForeignAssets:Start destroy
+    case 13571: // ForeignAssets:Destroy accounts
+    case 13572: // ForeignAssets:Destroy approvals
+    case 13573: // ForeignAssets:Finish destroy
+    case 13574: // ForeignAssets:Mint
+    case 13575: // ForeignAssets:Burn
+    case 13576: // ForeignAssets:Transfer
+    case 13577: // ForeignAssets:Transfer keep alive
+    case 13578: // ForeignAssets:Force transfer
+    case 13579: // ForeignAssets:Freeze
+    case 13580: // ForeignAssets:Thaw
+    case 13581: // ForeignAssets:Freeze asset
+    case 13582: // ForeignAssets:Thaw asset
+    case 13583: // ForeignAssets:Transfer ownership
+    case 13584: // ForeignAssets:Set team
+    case 13585: // ForeignAssets:Set metadata
+    case 13586: // ForeignAssets:Clear metadata
+    case 13587: // ForeignAssets:Force set metadata
+    case 13588: // ForeignAssets:Force clear metadata
+    case 13589: // ForeignAssets:Force asset status
+    case 13590: // ForeignAssets:Approve transfer
+    case 13591: // ForeignAssets:Cancel approval
+    case 13592: // ForeignAssets:Force cancel approval
+    case 13593: // ForeignAssets:Transfer approved
+    case 13594: // ForeignAssets:Touch
+    case 13595: // ForeignAssets:Refund
+    case 13596: // ForeignAssets:Set min balance
+    case 13597: // ForeignAssets:Touch other
+    case 13598: // ForeignAssets:Refund other
+    case 13599: // ForeignAssets:Block
         return false;
     default:
         return true;
