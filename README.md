@@ -28,7 +28,7 @@ Please:
 - **Do not use in production**
 - **Do not use a Ledger device with funds for development purposes.**
 - **Have a separate and marked device that is used ONLY for development and testing**
-# Statemint 13.9430.x
+# Statemint 14.1001000.x
 
 ## System
 
@@ -60,17 +60,15 @@ Please:
 
 ## Balances
 
-| Name                   | Nano S             | Nano S XL          | Nano SP/X - Stax   | Nesting            | Arguments                                                                                  |
-| ---------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------------------------------------------------------------------------------ |
-| Transfer allow death   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/>                                   |
-| Set balance deprecated |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`who<br/>`CompactBalance`new_free<br/>`CompactBalance`old_reserved<br/> |
-| Force transfer         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`source<br/>`AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/>    |
-| Transfer keep alive    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/>                                   |
-| Transfer all           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    | `AccountIdLookupOfT`dest<br/>`bool`keep_alive<br/>                                         |
-| Force unreserve        |                    | :heavy_check_mark: | :heavy_check_mark: |                    | `AccountIdLookupOfT`who<br/>`Balance`amount<br/>                                           |
-| Upgrade accounts       |                    | :heavy_check_mark: | :heavy_check_mark: |                    | `VecAccountId`who<br/>                                                                     |
-| Transfer               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/>                                   |
-| Force set balance      |                    | :heavy_check_mark: | :heavy_check_mark: |                    | `AccountIdLookupOfT`who<br/>`CompactBalance`new_free<br/>                                  |
+| Name                 | Nano S             | Nano S XL          | Nano SP/X - Stax   | Nesting            | Arguments                                                                               |
+| -------------------- | ------------------ | ------------------ | ------------------ | ------------------ | --------------------------------------------------------------------------------------- |
+| Transfer allow death | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/>                                |
+| Force transfer       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`source<br/>`AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/> |
+| Transfer keep alive  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`dest<br/>`CompactBalance`amount<br/>                                |
+| Transfer all         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `AccountIdLookupOfT`dest<br/>`bool`keep_alive<br/>                                      |
+| Force unreserve      |                    | :heavy_check_mark: | :heavy_check_mark: |                    | `AccountIdLookupOfT`who<br/>`Balance`amount<br/>                                        |
+| Upgrade accounts     |                    | :heavy_check_mark: | :heavy_check_mark: |                    | `VecAccountId`who<br/>                                                                  |
+| Force set balance    |                    | :heavy_check_mark: | :heavy_check_mark: |                    | `AccountIdLookupOfT`who<br/>`CompactBalance`new_free<br/>                               |
 
 ## CollatorSelection
 
@@ -81,13 +79,15 @@ Please:
 | Set candidacy bond     |        | :heavy_check_mark: | :heavy_check_mark: |         | `Balance`bond<br/>       |
 | Register as candidate  |        | :heavy_check_mark: | :heavy_check_mark: |         |                          |
 | Leave intent           |        | :heavy_check_mark: | :heavy_check_mark: |         |                          |
+| Add invulnerable       |        | :heavy_check_mark: | :heavy_check_mark: |         | `AccountId`who<br/>      |
+| Remove invulnerable    |        | :heavy_check_mark: | :heavy_check_mark: |         | `AccountId`who<br/>      |
 
 ## Session
 
-| Name       | Nano S             | Nano S XL          | Nano SP/X - Stax   | Nesting | Arguments                        |
-| ---------- | ------------------ | ------------------ | ------------------ | ------- | -------------------------------- |
-| Set keys   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |         | `Keys`keys<br/>`Bytes`proof<br/> |
-| Purge keys | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |         |                                  |
+| Name       | Nano S             | Nano S XL          | Nano SP/X - Stax   | Nesting            | Arguments                        |
+| ---------- | ------------------ | ------------------ | ------------------ | ------------------ | -------------------------------- |
+| Set keys   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | `Keys`keys<br/>`Bytes`proof<br/> |
+| Purge keys | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                                  |
 
 ## XcmpQueue
 
@@ -110,8 +110,8 @@ Please:
 | Send                             |        |           |                    |         | `BoxVersionedMultiLocation`dest<br/>`BoxVersionedXcmTuple`message<br/>                                                                                                    |
 | Teleport assets                  |        |           | :heavy_check_mark: |         | `BoxVersionedMultiLocation`dest<br/>`BoxVersionedMultiLocation`beneficiary<br/>`BoxVersionedMultiAssets`assets<br/>`u32`fee_asset_item<br/>                               |
 | Reserve transfer assets          |        |           | :heavy_check_mark: |         | `BoxVersionedMultiLocation`dest<br/>`BoxVersionedMultiLocation`beneficiary<br/>`BoxVersionedMultiAssets`assets<br/>`u32`fee_asset_item<br/>                               |
-| Execute                          |        |           |                    |         | `BoxVersionedXcmTasSysConfigRuntimeCall`message<br/>`Weight`max_weight<br/>                                                                                               |
-| Force xcm version                |        |           |                    |         | `BoxMultiLocation`location<br/>`XcmVersion`xcm_version<br/>                                                                                                               |
+| Execute                          |        |           |                    |         | `BoxVersionedXcmTasConfigRuntimeCall`message<br/>`Weight`max_weight<br/>                                                                                                  |
+| Force xcm version                |        |           |                    |         | `BoxMultiLocation`location<br/>`XcmVersion`version<br/>                                                                                                                   |
 | Force default xcm version        |        |           |                    |         | `OptionXcmVersion`maybe_xcm_version<br/>                                                                                                                                  |
 | Force subscribe version notify   |        |           |                    |         | `BoxVersionedMultiLocation`location<br/>                                                                                                                                  |
 | Force unsubscribe version notify |        |           |                    |         | `BoxVersionedMultiLocation`location<br/>                                                                                                                                  |
@@ -124,6 +124,12 @@ Please:
 | Name               | Nano S | Nano S XL          | Nano SP/X - Stax   | Nesting | Arguments                                            |
 | ------------------ | ------ | ------------------ | ------------------ | ------- | ---------------------------------------------------- |
 | Service overweight |        | :heavy_check_mark: | :heavy_check_mark: |         | `OverweightIndex`index<br/>`Weight`weight_limit<br/> |
+
+## ToKusamaXcmRouter
+
+| Name                 | Nano S | Nano S XL | Nano SP/X - Stax | Nesting | Arguments                                   |
+| -------------------- | ------ | --------- | ---------------- | ------- | ------------------------------------------- |
+| Report bridge status |        |           |                  |         | `H256`bridge_id<br/>`bool`is_congested<br/> |
 
 ## Utility
 
@@ -235,7 +241,7 @@ Please:
 | Create                          |        | :heavy_check_mark: | :heavy_check_mark: |         | `AccountIdLookupOfT`admin<br/>`CollectionConfigFor`config<br/>                                                                                                                                                        |
 | Force create                    |        | :heavy_check_mark: | :heavy_check_mark: |         | `AccountIdLookupOfT`owner<br/>`CollectionConfigFor`config<br/>                                                                                                                                                        |
 | Destroy                         |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`DestroyWitness`witness<br/>                                                                                                                                                             |
-| Mint                            |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`mint_to<br/>`OptionMintWitnessItemId`witness_data<br/>                                                                                              |
+| Mint                            |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`mint_to<br/>`OptionMintWitnessItemIdDepositBalanceOf`witness_data<br/>                                                                              |
 | Force mint                      |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`mint_to<br/>`ItemConfig`item_config<br/>                                                                                                            |
 | Burn                            |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>                                                                                                                                                                        |
 | Transfer                        |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`dest<br/>                                                                                                                                           |
@@ -247,7 +253,7 @@ Please:
 | Set team                        |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`OptionAccountIdLookupOfT`issuer<br/>`OptionAccountIdLookupOfT`admin<br/>`OptionAccountIdLookupOfT`freezer<br/>                                                                          |
 | Force collection owner          |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`AccountIdLookupOfT`owner<br/>                                                                                                                                                           |
 | Force collection config         |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`CollectionConfigFor`config<br/>                                                                                                                                                         |
-| Approve transfer                |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`delegate<br/>`Optionu32`maybe_deadline<br/>                                                                                                         |
+| Approve transfer                |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`delegate<br/>`OptionBlockNumber`maybe_deadline<br/>                                                                                                 |
 | Cancel approval                 |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`AccountIdLookupOfT`delegate<br/>                                                                                                                                       |
 | Clear all transfer approvals    |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>                                                                                                                                                                        |
 | Lock item properties            |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`collection<br/>`ItemId`item<br/>`bool`lock_metadata<br/>`bool`lock_attributes<br/>                                                                                                                      |
@@ -269,7 +275,7 @@ Please:
 | Create swap                     |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`offered_collection<br/>`ItemId`offered_item<br/>`CollectionId`desired_collection<br/>`OptionItemId`maybe_desired_item<br/>`OptionPriceWithDirectionItemPrice`maybe_price<br/>`BlockNumber`duration<br/> |
 | Cancel swap                     |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`offered_collection<br/>`ItemId`offered_item<br/>                                                                                                                                                        |
 | Claim swap                      |        | :heavy_check_mark: | :heavy_check_mark: |         | `CollectionId`send_collection<br/>`ItemId`send_item<br/>`CollectionId`receive_collection<br/>`ItemId`receive_item<br/>`OptionPriceWithDirectionItemPrice`witness_price<br/>                                           |
-| Mint pre signed                 |        |                    |                    |         | `PreSignedMintOf`mint_data<br/>`OffchainSignature`signature<br/>`AccountId`signer<br/>                                                                                                                                |
+| Mint pre signed                 |        |                    |                    |         | `BoxPreSignedMintOf`mint_data<br/>`OffchainSignature`signature<br/>`AccountId`signer<br/>                                                                                                                             |
 | Set attributes pre signed       |        |                    |                    |         | `PreSignedAttributesOf`data<br/>`OffchainSignature`signature<br/>`AccountId`signer<br/>                                                                                                                               |
 
 ## ForeignAssets
