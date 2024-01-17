@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  (c) 2019 - 2023 Zondax AG
+ *  (c) 2019 - 2024 Zondax AG
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -816,6 +816,10 @@ parser_error_t _readMultiAssetIdV3(parser_context_t* c, pd_MultiAssetIdV3_t* v)
     return parser_ok;
 }
 
+parser_error_t _readu128(parser_context_t* c, pd_u128_t* v) {
+    GEN_DEF_READARRAY(16)
+}
+
 parser_error_t _readAccountId(parser_context_t* c, pd_AccountId_t* v) {
     GEN_DEF_READARRAY(32)
 }
@@ -970,10 +974,11 @@ parser_error_t _readMintSettings(parser_context_t* c, pd_MintSettings_t* v)
     return parser_ok;
 }
 
-parser_error_t _readMintWitnessItemId(parser_context_t* c, pd_MintWitnessItemId_t* v)
+parser_error_t _readMintWitnessItemIdDepositBalanceOf(parser_context_t* c, pd_MintWitnessItemIdDepositBalanceOf_t* v)
 {
     CHECK_INPUT()
-    CHECK_ERROR(_readUInt32(c, &v->ownedItem))
+    CHECK_ERROR(_readOptionu32(c, &v->ownedItem))
+    CHECK_ERROR(_readOptionu128(c, &v->mintPrice))
     return parser_ok;
 }
 
@@ -1218,6 +1223,16 @@ parser_error_t _readOptionBalance(parser_context_t* c, pd_OptionBalance_t* v)
     return parser_ok;
 }
 
+parser_error_t _readOptionu128(parser_context_t* c, pd_Optionu128_t* v)
+{
+    CHECK_INPUT()
+    CHECK_ERROR(_readUInt8(c, &v->some))
+    if (v->some > 0) {
+        CHECK_ERROR(_readu128(c, &v->contained))
+    }
+    return parser_ok;
+}
+
 parser_error_t _readOptionu32(parser_context_t* c, pd_Optionu32_t* v)
 {
     CHECK_INPUT()
@@ -1244,6 +1259,16 @@ parser_error_t _readOptionItemPrice(parser_context_t* c, pd_OptionItemPrice_t* v
     CHECK_ERROR(_readUInt8(c, &v->some))
     if (v->some > 0) {
         CHECK_ERROR(_readItemPrice(c, &v->contained))
+    }
+    return parser_ok;
+}
+
+parser_error_t _readOptionMintWitnessItemIdDepositBalanceOf(parser_context_t* c, pd_OptionMintWitnessItemIdDepositBalanceOf_t* v)
+{
+    CHECK_INPUT()
+    CHECK_ERROR(_readUInt8(c, &v->some))
+    if (v->some > 0) {
+        CHECK_ERROR(_readMintWitnessItemIdDepositBalanceOf(c, &v->contained))
     }
     return parser_ok;
 }
@@ -1278,6 +1303,16 @@ parser_error_t _readOptionAccountId(parser_context_t* c, pd_OptionAccountId_t* v
     return parser_ok;
 }
 
+parser_error_t _readOptionBlockNumber(parser_context_t* c, pd_OptionBlockNumber_t* v)
+{
+    CHECK_INPUT()
+    CHECK_ERROR(_readUInt8(c, &v->some))
+    if (v->some > 0) {
+        CHECK_ERROR(_readBlockNumber(c, &v->contained))
+    }
+    return parser_ok;
+}
+
 parser_error_t _readOptionChargeAssetIdOf(parser_context_t* c, pd_OptionChargeAssetIdOf_t* v)
 {
     CHECK_INPUT()
@@ -1304,16 +1339,6 @@ parser_error_t _readOptionItemId(parser_context_t* c, pd_OptionItemId_t* v)
     CHECK_ERROR(_readUInt8(c, &v->some))
     if (v->some > 0) {
         CHECK_ERROR(_readItemId(c, &v->contained))
-    }
-    return parser_ok;
-}
-
-parser_error_t _readOptionMintWitnessItemId(parser_context_t* c, pd_OptionMintWitnessItemId_t* v)
-{
-    CHECK_INPUT()
-    CHECK_ERROR(_readUInt8(c, &v->some))
-    if (v->some > 0) {
-        CHECK_ERROR(_readMintWitnessItemId(c, &v->contained))
     }
     return parser_ok;
 }
@@ -3422,6 +3447,36 @@ parser_error_t _toStringMultiAssetIdV3(
     return parser_ok;
 }
 
+parser_error_t _toStringu128(
+    const pd_u128_t* v,
+    char* outValue,
+    uint16_t outValueLen,
+    uint8_t pageIdx,
+    uint8_t* pageCount)
+{
+    CLEAN_AND_CHECK()
+
+    char bufferUI[200];
+    MEMZERO(outValue, outValueLen);
+    MEMZERO(bufferUI, sizeof(bufferUI));
+    *pageCount = 1;
+
+    uint8_t bcdOut[100];
+    const uint16_t bcdOutLen = sizeof(bcdOut);
+    bignumLittleEndian_to_bcd(bcdOut, bcdOutLen, v->_ptr, 16);
+    if (!bignumLittleEndian_bcdprint(bufferUI, sizeof(bufferUI), bcdOut, bcdOutLen))
+        return parser_unexpected_buffer_end;
+
+    // Format number
+    if (intstr_to_fpstr_inplace(bufferUI, sizeof(bufferUI), 0) == 0) {
+        return parser_unexpected_value;
+    }
+
+    pageString(outValue, outValueLen, bufferUI, pageIdx, pageCount);
+
+    return parser_ok;
+}
+
 parser_error_t _toStringAccountId(
     const pd_AccountId_t* v,
     char* outValue,
@@ -3655,7 +3710,7 @@ parser_error_t _toStringCall(
 
     pageIdx--;
 
-    if (pageIdx > *pageCount) {
+    if (pageIdx >= *pageCount) {
         return parser_display_idx_out_of_range;
     }
 
@@ -3838,16 +3893,41 @@ parser_error_t _toStringMintSettings(
     return parser_display_idx_out_of_range;
 }
 
-parser_error_t _toStringMintWitnessItemId(
-    const pd_MintWitnessItemId_t* v,
+parser_error_t _toStringMintWitnessItemIdDepositBalanceOf(
+    const pd_MintWitnessItemIdDepositBalanceOf_t* v,
     char* outValue,
     uint16_t outValueLen,
     uint8_t pageIdx,
     uint8_t* pageCount)
 {
     CLEAN_AND_CHECK()
-    CHECK_ERROR(_toStringu32(&v->ownedItem, outValue, outValueLen, pageIdx, pageCount))
-    return parser_ok;
+
+    // First measure number of pages
+    uint8_t pages[2] = { 0 };
+    CHECK_ERROR(_toStringOptionu32(&v->ownedItem, outValue, outValueLen, 0, &pages[0]))
+    CHECK_ERROR(_toStringOptionu128(&v->mintPrice, outValue, outValueLen, 0, &pages[1]))
+
+    *pageCount = 0;
+    for (uint8_t i = 0; i < (uint8_t)sizeof(pages); i++) {
+        *pageCount += pages[i];
+    }
+
+    if (pageIdx >= *pageCount) {
+        return parser_display_idx_out_of_range;
+    }
+
+    if (pageIdx < pages[0]) {
+        CHECK_ERROR(_toStringOptionu32(&v->ownedItem, outValue, outValueLen, pageIdx, &pages[0]))
+        return parser_ok;
+    }
+    pageIdx -= pages[0];
+
+    if (pageIdx < pages[1]) {
+        CHECK_ERROR(_toStringOptionu128(&v->mintPrice, outValue, outValueLen, pageIdx, &pages[1]))
+        return parser_ok;
+    }
+
+    return parser_display_idx_out_of_range;
 }
 
 parser_error_t _toStringPriceWithDirectionItemPrice(
@@ -4437,6 +4517,27 @@ parser_error_t _toStringOptionBalance(
     return parser_ok;
 }
 
+parser_error_t _toStringOptionu128(
+    const pd_Optionu128_t* v,
+    char* outValue,
+    uint16_t outValueLen,
+    uint8_t pageIdx,
+    uint8_t* pageCount)
+{
+    CLEAN_AND_CHECK()
+
+    *pageCount = 1;
+    if (v->some > 0) {
+        CHECK_ERROR(_toStringu128(
+            &v->contained,
+            outValue, outValueLen,
+            pageIdx, pageCount));
+    } else {
+        snprintf(outValue, outValueLen, "None");
+    }
+    return parser_ok;
+}
+
 parser_error_t _toStringOptionu32(
     const pd_Optionu32_t* v,
     char* outValue,
@@ -4491,6 +4592,27 @@ parser_error_t _toStringOptionItemPrice(
     *pageCount = 1;
     if (v->some > 0) {
         CHECK_ERROR(_toStringItemPrice(
+            &v->contained,
+            outValue, outValueLen,
+            pageIdx, pageCount));
+    } else {
+        snprintf(outValue, outValueLen, "None");
+    }
+    return parser_ok;
+}
+
+parser_error_t _toStringOptionMintWitnessItemIdDepositBalanceOf(
+    const pd_OptionMintWitnessItemIdDepositBalanceOf_t* v,
+    char* outValue,
+    uint16_t outValueLen,
+    uint8_t pageIdx,
+    uint8_t* pageCount)
+{
+    CLEAN_AND_CHECK()
+
+    *pageCount = 1;
+    if (v->some > 0) {
+        CHECK_ERROR(_toStringMintWitnessItemIdDepositBalanceOf(
             &v->contained,
             outValue, outValueLen,
             pageIdx, pageCount));
@@ -4563,6 +4685,27 @@ parser_error_t _toStringOptionAccountId(
     return parser_ok;
 }
 
+parser_error_t _toStringOptionBlockNumber(
+    const pd_OptionBlockNumber_t* v,
+    char* outValue,
+    uint16_t outValueLen,
+    uint8_t pageIdx,
+    uint8_t* pageCount)
+{
+    CLEAN_AND_CHECK()
+
+    *pageCount = 1;
+    if (v->some > 0) {
+        CHECK_ERROR(_toStringBlockNumber(
+            &v->contained,
+            outValue, outValueLen,
+            pageIdx, pageCount));
+    } else {
+        snprintf(outValue, outValueLen, "None");
+    }
+    return parser_ok;
+}
+
 parser_error_t _toStringOptionChargeAssetIdOf(
     const pd_OptionChargeAssetIdOf_t* v,
     char* outValue,
@@ -4617,27 +4760,6 @@ parser_error_t _toStringOptionItemId(
     *pageCount = 1;
     if (v->some > 0) {
         CHECK_ERROR(_toStringItemId(
-            &v->contained,
-            outValue, outValueLen,
-            pageIdx, pageCount));
-    } else {
-        snprintf(outValue, outValueLen, "None");
-    }
-    return parser_ok;
-}
-
-parser_error_t _toStringOptionMintWitnessItemId(
-    const pd_OptionMintWitnessItemId_t* v,
-    char* outValue,
-    uint16_t outValueLen,
-    uint8_t pageIdx,
-    uint8_t* pageCount)
-{
-    CLEAN_AND_CHECK()
-
-    *pageCount = 1;
-    if (v->some > 0) {
-        CHECK_ERROR(_toStringMintWitnessItemId(
             &v->contained,
             outValue, outValueLen,
             pageIdx, pageCount));

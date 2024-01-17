@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  (c) 2019 - 2023 Zondax AG
+ *  (c) 2019 - 2024 Zondax AG
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -44,19 +44,19 @@ static const char* STR_ME_SET_CODE_WITHOUT_CHECKS = "Set code without checks";
 static const char* STR_ME_REMARK_WITH_EVENT = "Remark with event";
 static const char* STR_ME_SET = "Set";
 static const char* STR_ME_TRANSFER_ALLOW_DEATH = "Transfer allow death";
-static const char* STR_ME_SET_BALANCE_DEPRECATED = "Set balance deprecated";
 static const char* STR_ME_FORCE_TRANSFER = "Force transfer";
 static const char* STR_ME_TRANSFER_KEEP_ALIVE = "Transfer keep alive";
 static const char* STR_ME_TRANSFER_ALL = "Transfer all";
 static const char* STR_ME_FORCE_UNRESERVE = "Force unreserve";
 static const char* STR_ME_UPGRADE_ACCOUNTS = "Upgrade accounts";
-static const char* STR_ME_TRANSFER = "Transfer";
 static const char* STR_ME_FORCE_SET_BALANCE = "Force set balance";
 static const char* STR_ME_SET_INVULNERABLES = "Set invulnerables";
 static const char* STR_ME_SET_DESIRED_CANDIDATES = "Set desired candidates";
 static const char* STR_ME_SET_CANDIDACY_BOND = "Set candidacy bond";
 static const char* STR_ME_REGISTER_AS_CANDIDATE = "Register as candidate";
 static const char* STR_ME_LEAVE_INTENT = "Leave intent";
+static const char* STR_ME_ADD_INVULNERABLE = "Add invulnerable";
+static const char* STR_ME_REMOVE_INVULNERABLE = "Remove invulnerable";
 static const char* STR_ME_SET_KEYS = "Set keys";
 static const char* STR_ME_PURGE_KEYS = "Purge keys";
 static const char* STR_ME_SERVICE_OVERWEIGHT = "Service overweight";
@@ -98,6 +98,7 @@ static const char* STR_ME_DESTROY_APPROVALS = "Destroy approvals";
 static const char* STR_ME_FINISH_DESTROY = "Finish destroy";
 static const char* STR_ME_MINT = "Mint";
 static const char* STR_ME_BURN = "Burn";
+static const char* STR_ME_TRANSFER = "Transfer";
 static const char* STR_ME_FREEZE = "Freeze";
 static const char* STR_ME_THAW = "Thaw";
 static const char* STR_ME_FREEZE_ASSET = "Freeze asset";
@@ -160,11 +161,10 @@ static const char* STR_IT_subkeys = "Subkeys";
 static const char* STR_IT_now = "Now";
 static const char* STR_IT_dest = "Dest";
 static const char* STR_IT_amount = "Amount";
-static const char* STR_IT_who = "Who";
-static const char* STR_IT_new_free = "New free";
-static const char* STR_IT_old_reserved = "Old reserved";
 static const char* STR_IT_source = "Source";
 static const char* STR_IT_keep_alive = "Keep alive";
+static const char* STR_IT_who = "Who";
+static const char* STR_IT_new_free = "New free";
 static const char* STR_IT_new_ = "New";
 static const char* STR_IT_max = "Max";
 static const char* STR_IT_bond = "Bond";
@@ -177,7 +177,7 @@ static const char* STR_IT_assets = "Assets";
 static const char* STR_IT_fee_asset_item = "Fee asset item";
 static const char* STR_IT_max_weight = "Max weight";
 static const char* STR_IT_location = "Location";
-static const char* STR_IT_xcm_version = "Xcm version";
+static const char* STR_IT_version = "Version";
 static const char* STR_IT_maybe_xcm_version = "Maybe xcm version";
 static const char* STR_IT_suspended = "Suspended";
 static const char* STR_IT_calls = "Calls";
